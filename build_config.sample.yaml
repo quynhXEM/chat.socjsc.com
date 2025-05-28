@@ -22,4 +22,3 @@ modules:
     - "@vector-im/element-web-ilag-module@^0.0.1"
 
     # An example of pulling a module from local filesystem during development
-    - "file:/home/user/development/element-web-ilag-module"
