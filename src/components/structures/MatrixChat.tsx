@@ -503,7 +503,7 @@ export default class MatrixChat extends React.PureComponent<IProps, IState> {
 
     private onWindowResized = (): void => {
         // XXX: This is a very unreliable way to detect whether or not the the devtools are open
-        this.warnInConsole();
+        // this.warnInConsole();
     };
 
     private warnInConsole = throttle((): void => {
