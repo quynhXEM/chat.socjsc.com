@@ -2997,7 +2997,7 @@
             "metaspaces_subsection": "Anzuzeigende Spaces",
             "metaspaces_video_rooms": "Videoräume und -konferenzen",
             "metaspaces_video_rooms_description": "Gruppiere alle privaten Videoräume und -konferenzen.",
-            "metaspaces_video_rooms_description_invite_extension": "Sie können Personen außerhalb von Matrix zu Konferenzen einladen.",
+            "metaspaces_video_rooms_description_invite_extension": "Sie können Personen außerhalb von Decentralised zu Konferenzen einladen.",
             "spaces_explainer": "Räume sind eine Möglichkeit, Chatrooms und Personen zu gruppieren. Abgesehen von den Räumen, in denen Sie sich gerade befinden, können Sie auch einige vorgefertigte Räume verwenden.",
             "title": "Seitenleiste"
         },
@@ -3784,7 +3784,7 @@
         "description": "Wenn Sie fortfahren, funktionieren einige Funktionen möglicherweise nicht mehr und es besteht das Risiko, dass Sie in Zukunft Daten verlieren. Aktualisieren Sie Ihren Browser, um die Nutzung von %(brand)s fortzusetzen.",
         "title": "%(brand)s unterstützt diesen Browser nicht"
     },
-    "unsupported_server_description": "Dieser Server nutzt eine ältere Matrix-Version. Aktualisiere auf Matrix %(version)s, um %(brand)s fehlerfrei nutzen zu können.",
+    "unsupported_server_description": "Dieser Server nutzt eine ältere Matrix-Version. Aktualisiere auf Decentralised %(version)s, um %(brand)s fehlerfrei nutzen zu können.",
     "unsupported_server_title": "Dein Server wird nicht unterstützt",
     "update": {
         "changelog": "Änderungsprotokoll",

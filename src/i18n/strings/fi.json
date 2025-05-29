@@ -1179,7 +1179,7 @@
         "to_space": "Kutsu avaruuteen %(spaceName)s",
         "transfer_dial_pad_tab": "Näppäimistö",
         "transfer_user_directory_tab": "Käyttäjähakemisto",
-        "unable_find_profiles_description_default": "Alla luetelluille Matrix ID:ille ei löytynyt profiileja. Haluaisitko kutsua ne siitä huolimatta?",
+        "unable_find_profiles_description_default": "Alla luetelluille Decentralised ID:ille ei löytynyt profiileja. Haluaisitko kutsua ne siitä huolimatta?",
         "unable_find_profiles_invite_label_default": "Kutsu silti",
         "unable_find_profiles_invite_never_warn_label_default": "Kutsu silti, äläkä varoita minua enää uudelleen",
         "unable_find_profiles_title": "Seuraavat käyttäjät eivät välttämättä ole olemassa"
@@ -2426,7 +2426,7 @@
             "time_heading": "Ajan näyttäminen",
             "user_timezone": "Aseta aikavyöhyke"
         },
-        "prompt_invite": "Kysy varmistus ennen kutsujen lähettämistä mahdollisesti epäkelpoihin Matrix ID:hin",
+        "prompt_invite": "Kysy varmistus ennen kutsujen lähettämistä mahdollisesti epäkelpoihin Decentralised ID:hin",
         "replace_plain_emoji": "Korvaa automaattisesti teksimuotoiset emojit",
         "security": {
             "analytics_description": "Jaa nimettömiä tietoja auttaaksesi meitä tunnistamaan ongelmia. Ei mitään henkilökohtaista. Ei kolmansia osapuolia.",
@@ -2670,7 +2670,7 @@
         "part_unknown_alias": "Huoneen osoitetta %(roomAlias)s ei tunnistettu",
         "plain": "Lähettää viestin sellaisenaan, tulkitsematta sitä markdownina",
         "query": "Avaa keskustelun annetun käyttäjän kanssa",
-        "query_not_found_phone_number": "Puhelinnumerolla ei löydy Matrix ID:tä",
+        "query_not_found_phone_number": "Puhelinnumerolla ei löydy Decentralised ID:tä",
         "rageshake": "Lähetä virheilmoitus lokien kera",
         "rainbow": "Lähettää viestin sateenkaaren väreissä",
         "rainbowme": "Lähettää emoten sateenkaaren väreissä",

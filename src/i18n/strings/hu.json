@@ -2432,7 +2432,7 @@
         "title": "A kiszolgáló nem válaszol"
     },
     "service_worker_error": {
-        "description": "Az %(brand)s ún. service workert igényel a hitelesített médiafájlok Matrix tartalomtárolókból történő betöltéséhez. Ezt a böngészője nem támogatja, ezért előfordulhat, hogy a médiafájlok nem töltődnek be.",
+        "description": "Az %(brand)s ún. service workert igényel a hitelesített médiafájlok Decentralised tartalomtárolókból történő betöltéséhez. Ezt a böngészője nem támogatja, ezért előfordulhat, hogy a médiafájlok nem töltődnek be.",
         "title": "Nem sikerült betölteni a service workert"
     },
     "seshat": {
@@ -2702,11 +2702,11 @@
         "key_export_import": {
             "confirm_passphrase": "Jelmondat megerősítése",
             "enter_passphrase": "Jelmondat megadása",
-            "export_description_1": "Ezzel a folyamattal kimentheted a titkosított szobák üzeneteihez tartozó kulcsokat egy helyi fájlba. Ez után be tudod tölteni ezt a fájlt egy másik Matrix kliensbe, így az a kliens is vissza tudja fejteni az üzeneteket.",
+            "export_description_1": "Ezzel a folyamattal kimentheted a titkosított szobák üzeneteihez tartozó kulcsokat egy helyi fájlba. Ez után be tudod tölteni ezt a fájlt egy másik Decentralised kliensbe, így az a kliens is vissza tudja fejteni az üzeneteket.",
             "export_description_2": "Az exportált fájl lehetővé teszi, hogy bárki, aki el tudja olvasni, visszafejtse a titkosított üzeneteket, amelyeket Ön láthat, ezért ügyeljen a biztonságra. Ennek érdekében az alábbiakban adjon meg egy egyedi jelmondatot, amely csak az exportált adatok titkosítására szolgál. Az adatok importálása csak ugyanezen jelszó használatával lesz lehetséges.",
             "export_title": "Szoba kulcsok mentése",
             "file_to_import": "Fájl betöltése",
-            "import_description_1": "Ezzel a folyamattal lehetőséged van betölteni a titkosítási kulcsokat amiket egy másik Matrix kliensből mentettél ki. Ez után minden üzenetet vissza tudsz fejteni amit a másik kliens tudott.",
+            "import_description_1": "Ezzel a folyamattal lehetőséged van betölteni a titkosítási kulcsokat amiket egy másik Decentralised kliensből mentettél ki. Ez után minden üzenetet vissza tudsz fejteni amit a másik kliens tudott.",
             "import_description_2": "A kimentett fájl jelmondattal van védve. A kibontáshoz add meg a jelmondatot.",
             "import_title": "Szoba kulcsok betöltése",
             "phrase_cannot_be_empty": "A jelmondat nem lehet üres",
@@ -2937,7 +2937,7 @@
             "unverified_session": "Ellenőrizetlen munkamenet",
             "unverified_session_explainer_1": "Ez a munkamenet nem támogatja a titkosítást, így nem lehet ellenőrizni sem.",
             "unverified_session_explainer_2": "Ezzel a munkamenettel olyan szobákban ahol a titkosítás be van kapcsolva nem tud részt venni.",
-            "unverified_session_explainer_3": "A biztonság és adatbiztonság érdekében javasolt olyan Matrix klienst használni ami támogatja a titkosítást.",
+            "unverified_session_explainer_3": "A biztonság és adatbiztonság érdekében javasolt olyan Decentralised klienst használni ami támogatja a titkosítást.",
             "unverified_sessions": "Meg nem erősített munkamenetek",
             "unverified_sessions_explainer_1": "Az ellenőrizetlen munkamenetek olyanok amivel a jelszavával bejelentkeztek de nem lett ellenőrizve.",
             "unverified_sessions_explainer_2": "Egészen bizonyosodjon meg arról, hogy ismeri ezeket a munkameneteket mivel elképzelhető, hogy jogosulatlan fiókhasználatot jeleznek.",
@@ -3189,7 +3189,7 @@
             "network_dropdown_available_valid": "Jól néz ki",
             "network_dropdown_remove_server_adornment": "Távoli kiszolgáló: „%(roomServer)s”",
             "network_dropdown_required_invalid": "Adja meg a kiszolgáló nevét",
-            "network_dropdown_selected_label": "Megjelenítés: Matrix szobák",
+            "network_dropdown_selected_label": "Megjelenítés: Decentralised szobák",
             "network_dropdown_selected_label_instance": "Megjelenítés: %(instance)s szobái (%(server)s)",
             "network_dropdown_your_server_description": "Saját Matrix-kiszolgáló"
         }
@@ -3756,7 +3756,7 @@
         "description": "Ha folytatja, előfordulhat, hogy egyes funkciók nem működnek, és fennáll annak a kockázata, hogy a jövőben elveszítheti adatait. Frissítse böngészőjét ennek a használatához: %(brand)s.",
         "title": "%(brand)s nem támogatja ezt a böngészőt"
     },
-    "unsupported_server_description": "Ez a kiszolgáló a Matrix régebbi verzióját használja. Frissítsen a Matrix %(version)s verzióra az %(brand)s hibamentes használatához.",
+    "unsupported_server_description": "Ez a kiszolgáló a Decentralised régebbi verzióját használja. Frissítsen a Decentralised %(version)s verzióra az %(brand)s hibamentes használatához.",
     "unsupported_server_title": "A kiszolgálója nem támogatott",
     "update": {
         "changelog": "Változások",

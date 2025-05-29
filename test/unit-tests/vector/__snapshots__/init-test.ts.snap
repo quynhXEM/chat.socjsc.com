@@ -68,7 +68,7 @@ exports[`showIncompatibleBrowser should match snapshot 1`] = `
         <span>
           For the best experience, use 
           <a
-            href="https://google.com/chrome"
+            href="#"
             rel="noreferrer noopener"
             target="_blank"
           >
@@ -76,7 +76,7 @@ exports[`showIncompatibleBrowser should match snapshot 1`] = `
           </a>
           , 
           <a
-            href="https://firefox.com"
+            href="#"
             rel="noreferrer noopener"
             target="_blank"
           >
@@ -84,7 +84,7 @@ exports[`showIncompatibleBrowser should match snapshot 1`] = `
           </a>
           , 
           <a
-            href="https://microsoft.com/edge"
+            href="#"
             rel="noreferrer noopener"
             target="_blank"
           >
@@ -92,7 +92,7 @@ exports[`showIncompatibleBrowser should match snapshot 1`] = `
           </a>
           , or 
           <a
-            href="https://apple.com/safari"
+            href="#"
             rel="noreferrer noopener"
             target="_blank"
           >
@@ -159,7 +159,7 @@ exports[`showIncompatibleBrowser should match snapshot 1`] = `
         class="_button_vczzf_8 _has-icon_vczzf_57"
         data-kind="secondary"
         data-size="lg"
-        href="https://packages.element.io/desktop/install/macos/Element.dmg"
+        href="#"
         role="link"
         tabindex="0"
       >
@@ -174,7 +174,7 @@ exports[`showIncompatibleBrowser should match snapshot 1`] = `
         class="_button_vczzf_8 _has-icon_vczzf_57"
         data-kind="secondary"
         data-size="lg"
-        href="https://packages.element.io/desktop/install/win32/x64/Element%20Setup.exe"
+        href="#"
         role="link"
         tabindex="0"
       >
@@ -189,7 +189,7 @@ exports[`showIncompatibleBrowser should match snapshot 1`] = `
         class="_button_vczzf_8 _has-icon_vczzf_57"
         data-kind="secondary"
         data-size="lg"
-        href="https://packages.element.io/desktop/install/win32/arm64/Element%20Setup.exe"
+        href="#"
         role="link"
         tabindex="0"
       >
@@ -204,7 +204,7 @@ exports[`showIncompatibleBrowser should match snapshot 1`] = `
         class="_button_vczzf_8 _has-icon_vczzf_57"
         data-kind="secondary"
         data-size="lg"
-        href="https://element.io/download#linux"
+        href="#"
         role="link"
         tabindex="0"
       >
@@ -226,7 +226,7 @@ exports[`showIncompatibleBrowser should match snapshot 1`] = `
       style="--mx-flex-display: flex; --mx-flex-direction: row; --mx-flex-align: start; --mx-flex-justify: start; --mx-flex-gap: var(--cpd-space-6x); --mx-flex-wrap: nowrap;"
     >
       <a
-        href="https://apps.apple.com/app/vector/id1083446067"
+        href="#"
         rel="noreferrer noopener"
         target="_blank"
       >
@@ -237,7 +237,7 @@ exports[`showIncompatibleBrowser should match snapshot 1`] = `
         />
       </a>
       <a
-        href="https://play.google.com/store/apps/details?id=im.vector.app"
+        href=#"
         rel="noreferrer noopener"
         target="_blank"
       >
@@ -248,7 +248,7 @@ exports[`showIncompatibleBrowser should match snapshot 1`] = `
         />
       </a>
       <a
-        href="https://f-droid.org/repository/browse/?fdid=im.vector.app"
+        href="#"
         rel="noreferrer noopener"
         target="_blank"
       >

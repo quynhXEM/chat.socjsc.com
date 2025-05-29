@@ -328,7 +328,7 @@
         "reset_password_button": "Glemt passordet?",
         "reset_password_email_field_description": "Bruk en E-postadresse til å gjenopprette kontoen din",
         "reset_password_email_field_required_invalid": "Skriv inn en E-postadresse (Påkrevd på denne hjemmeserveren)",
-        "reset_password_email_not_associated": "E-postadressen din ser ikke ut til å være knyttet til en Matrix ID på denne hjemmeserveren.",
+        "reset_password_email_not_associated": "E-postadressen din ser ikke ut til å være knyttet til en Decentralised ID på denne hjemmeserveren.",
         "reset_password_email_not_found_title": "Denne e-postadressen ble ikke funnet",
         "reset_password_title": "Tilbakestill passordet ditt",
         "server_picker_custom": "Annen hjemmeserver",
@@ -1316,7 +1316,7 @@
         "impossible_dialog_title": "Integreringer er ikke tillatt"
     },
     "invite": {
-        "ask_anyway_description": "Kan ikke finne profiler for Matrix ID-ene som er oppført nedenfor - vil du starte en DM likevel?",
+        "ask_anyway_description": "Kan ikke finne profiler for Decentralised ID-ene som er oppført nedenfor - vil du starte en DM likevel?",
         "ask_anyway_label": "Start DM uansett",
         "ask_anyway_never_warn_label": "Start DM uansett og advar meg aldri igjen",
         "email_caption": "Inviter gjennom E-post",
@@ -1364,7 +1364,7 @@
         "to_space": "Inviter til %(spaceName)s",
         "transfer_dial_pad_tab": "Nummerpanel",
         "transfer_user_directory_tab": "Brukerkatalog",
-        "unable_find_profiles_description_default": "Kan ikke finne profiler for Matrix ID-ene som er oppført nedenfor - vil du invitere dem uansett?",
+        "unable_find_profiles_description_default": "Kan ikke finne profiler for Decentralised ID-ene som er oppført nedenfor - vil du invitere dem uansett?",
         "unable_find_profiles_invite_label_default": "Inviter likevel",
         "unable_find_profiles_invite_never_warn_label_default": "Inviter likevel, og advar meg aldri igjen",
         "unable_find_profiles_title": "Følgende brukere eksisterer kanskje ikke",
@@ -3098,7 +3098,7 @@
         "part_unknown_alias": "Ukjent romadresse: %(roomAlias)s",
         "plain": "Sender en melding som ren tekst, uten å tolke den som markdown",
         "query": "Åpner chat med den gitte brukeren",
-        "query_not_found_phone_number": "Kan ikke finne Matrix ID for telefonnummeret",
+        "query_not_found_phone_number": "Kan ikke finne Decentralised ID for telefonnummeret",
         "rageshake": "Send en feilrapport med logger",
         "rainbow": "Sender gitte melding i regnbuens farger",
         "rainbowme": "Sender gitte emote i regnbuens farger",
@@ -3783,7 +3783,7 @@
         "description": "Hvis du fortsetter, kan noen funksjoner slutte å fungere, og det er en risiko for at du kan miste data i fremtiden. Oppdater nettleseren din for å fortsette å bruke%(brand)s.",
         "title": "%(brand)s støtter ikke denne nettleseren"
     },
-    "unsupported_server_description": "Denne serveren bruker en eldre versjon av Matrix. Oppgrader til Matrix %(version)s for å bruke %(brand)s uten feil.",
+    "unsupported_server_description": "Denne serveren bruker en eldre versjon av Matrix. Oppgrader til Decentralised %(version)s for å bruke %(brand)s uten feil.",
     "unsupported_server_title": "Serveren din støttes ikke",
     "update": {
         "changelog": "Endringslogg",

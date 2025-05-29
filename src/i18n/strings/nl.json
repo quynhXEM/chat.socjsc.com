@@ -339,7 +339,7 @@
         "introduction": "Als je een bug via GitHub hebt ingediend, kunnen foutopsporingslogboeken ons helpen het probleem op te sporen. ",
         "log_request": "<a>Stuur ons jouw logs</a> om dit in de toekomst te helpen voorkomen.",
         "logs_sent": "Logs verstuurd",
-        "matrix_security_issue": "Bekijk eerst het <a>openbaarmakingsbeleid</a> van Matrix.org als je een probleem met de beveiliging van Matrix wilt melden.",
+        "matrix_security_issue": "Bekijk eerst het <a>openbaarmakingsbeleid</a> van Matrix.org als je een probleem met de beveiliging van Decentralised wilt melden.",
         "preparing_download": "Klaarmaken om logs te downloaden",
         "preparing_logs": "Logs voorbereiden voor versturen",
         "send_logs": "Logs versturen",
@@ -2385,7 +2385,7 @@
             "network_dropdown_available_valid": "Ziet er goed uit",
             "network_dropdown_remove_server_adornment": "Verwijder server “%(roomServer)s”",
             "network_dropdown_required_invalid": "Geef een servernaam",
-            "network_dropdown_selected_label": "Toon: Matrix kamers",
+            "network_dropdown_selected_label": "Toon: Decentralised kamers",
             "network_dropdown_selected_label_instance": "Toon: %(instance)s kamers (%(server)s)",
             "network_dropdown_your_server_description": "Jouw server"
         }

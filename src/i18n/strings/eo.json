@@ -231,7 +231,7 @@
         "server_picker_custom": "Alia hejmservilo",
         "server_picker_description_matrix.org": "Senpage aliĝu al milionoj sur la plej granda publika servilo",
         "server_picker_dialog_title": "Decidu, kie via konto gastiĝos",
-        "server_picker_explainer": "Uzu vian preferatan hejmservilon de Matrix se vi havas iun, aŭ gastigu vian propran.",
+        "server_picker_explainer": "Uzu vian preferatan hejmservilon de Decentralised se vi havas iun, aŭ gastigu vian propran.",
         "server_picker_failed_validate_homeserver": "Ne povas validigi hejmservilon",
         "server_picker_invalid_url": "Nevalida URL",
         "server_picker_learn_more": "Pri hejmserviloj",

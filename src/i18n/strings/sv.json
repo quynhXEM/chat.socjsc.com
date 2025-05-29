@@ -3760,7 +3760,7 @@
         "description": "Om du fortsätter kan vissa funktioner sluta fungera och det finns en risk att du kan förlora data i framtiden. Uppdatera din webbläsare för att fortsätta använda%(brand)s.",
         "title": "%(brand)sstöder inte den här webbläsaren"
     },
-    "unsupported_server_description": "Servern använder en äldre version av Matrix. Uppgradera till Matrix %(version)s för att använda %(brand)s utan fel.",
+    "unsupported_server_description": "Servern använder en äldre version av Matrix. Uppgradera till Decentralised %(version)s för att använda %(brand)s utan fel.",
     "unsupported_server_title": "Din server stöds inte",
     "update": {
         "changelog": "Ändringslogg",

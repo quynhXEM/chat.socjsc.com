@@ -46,7 +46,7 @@ describe("getInitialScreenAfterLogin", () => {
     });
 
     const makeMockLocation = (hash = "") => {
-        const url = new URL("https://test.org");
+        const url = new URL("#");
         url.hash = hash;
         return url as unknown as Location;
     };
