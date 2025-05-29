@@ -1464,7 +1464,7 @@
         "moderator": "モデレーター",
         "restricted": "制限"
     },
-    "powered_by_matrix_with_logo": "$matrixLogo による、分散型で暗号化された会話とコラボレーション",
+    "powered_by_matrix_with_logo": "分散型で暗号化された会話とコラボレーション",
     "presence": {
         "away": "離席中",
         "busy": "取り込み中",
@@ -3259,7 +3259,7 @@
         "you_are_presenting": "あなたが画面を共有しています"
     },
     "web_default_device_name": "%(appName)s： %(osName)sの%(browserName)s",
-    "welcome_to_element": "Elementにようこそ",
+    "welcome_to_element": "SOC Connectにようこそ",
     "widget": {
         "added_by": "ウィジェットの追加者",
         "capabilities_dialog": {

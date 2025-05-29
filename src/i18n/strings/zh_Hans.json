@@ -1438,7 +1438,7 @@
         "restricted": "受限"
     },
     "powered_by_matrix": "由 Matrix 驱动",
-    "powered_by_matrix_with_logo": "去中心化、加密的聊天与协作，由 $matrixLogo 驱动",
+    "powered_by_matrix_with_logo": "去中心化、加密的聊天与协作 驱动",
     "presence": {
         "away": "离开",
         "busy": "忙",
@@ -3182,7 +3182,7 @@
         "you_are_presenting": "你正在展示"
     },
     "web_default_device_name": "%(appName)s：%(browserName)s在%(osName)s",
-    "welcome_to_element": "欢迎来到 Element",
+    "welcome_to_element": "欢迎来到 SOC Connect",
     "widget": {
         "added_by": "挂件添加者",
         "capabilities_dialog": {

@@ -1738,7 +1738,7 @@
         "restricted": "Korlátozott"
     },
     "powered_by_matrix": "A gépházban: Matrix",
-    "powered_by_matrix_with_logo": "Elosztott, titkosított csevegés és együttműködés ezzel: $matrixLogo",
+    "powered_by_matrix_with_logo": "Elosztott, titkosított csevegés és együttműködés",
     "presence": {
         "away": "Távol",
         "busy": "Foglalt",
@@ -3974,7 +3974,7 @@
         "you_are_presenting": "Ön tartja a bemutatót"
     },
     "web_default_device_name": "%(appName)s: (%(browserName)s itt: %(osName)s)",
-    "welcome_to_element": "Üdvözli az Element",
+    "welcome_to_element": "Üdvözli az SOC Connect",
     "widget": {
         "added_by": "A kisalkalmazást hozzáadta",
         "capabilities_dialog": {

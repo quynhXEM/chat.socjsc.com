@@ -1751,7 +1751,7 @@
         "restricted": "Piiratud õigustega kasutaja"
     },
     "powered_by_matrix": "Põhineb Matrix'il",
-    "powered_by_matrix_with_logo": "Hajutatud ja krüpteeritud suhtlus- ning ühistöörakendus, mille aluseks on $matrixLogo",
+    "powered_by_matrix_with_logo": "Hajutatud ja krüpteeritud suhtlus- ning ühistöörakendus.",
     "presence": {
         "away": "Eemal",
         "busy": "Hõivatud",
@@ -4007,7 +4007,7 @@
         "you_are_presenting": "Sina esitad"
     },
     "web_default_device_name": "%(appName)s: %(browserName)s operatsioonisüsteemis %(osName)s",
-    "welcome_to_element": "Tere tulemast kasutama suhtlusrakendust Element",
+    "welcome_to_element": "Tere tulemast kasutama suhtlusrakendust SOC Connect",
     "widget": {
         "added_by": "Vidina lisaja",
         "capabilities_dialog": {

@@ -1751,7 +1751,7 @@
         "restricted": "Restrito"
     },
     "powered_by_matrix": "Desenvolvido por Matrix",
-    "powered_by_matrix_with_logo": "Chat descentralizado e encriptado & colaboração, powered by $matrixLogo",
+    "powered_by_matrix_with_logo": "Chat descentralizado e encriptado & colaboração",
     "presence": {
         "away": "Ausente",
         "busy": "Ocupado",
@@ -4006,7 +4006,7 @@
         "you_are_presenting": "Você está apresentando"
     },
     "web_default_device_name": "%(appName)s: %(browserName)s em %(osName)s",
-    "welcome_to_element": "Boas-vindas a Element",
+    "welcome_to_element": "Boas-vindas a SOC Connect",
     "widget": {
         "added_by": "Widget adicionado por",
         "capabilities_dialog": {

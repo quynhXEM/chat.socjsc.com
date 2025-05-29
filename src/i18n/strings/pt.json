@@ -1719,7 +1719,7 @@
         "restricted": "Restrito"
     },
     "powered_by_matrix": "Fornecido por Matrix",
-    "powered_by_matrix_with_logo": "Conversa e colaboração descentralizadas e encriptadas com a tecnologia $matrixLogo",
+    "powered_by_matrix_with_logo": "Conversa e colaboração descentralizadas e encriptadas com",
     "presence": {
         "away": "Ausente",
         "busy": "Ocupado",
@@ -3937,7 +3937,7 @@
         "you_are_presenting": "Estás a apresentar"
     },
     "web_default_device_name": "%(appName)s: %(browserName)s em %(osName)s",
-    "welcome_to_element": "Bem-vindo ao Element",
+    "welcome_to_element": "Bem-vindo ao SOC Connect",
     "widget": {
         "added_by": "Widget adicionado por",
         "capabilities_dialog": {

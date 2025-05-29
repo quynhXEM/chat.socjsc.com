@@ -1394,7 +1394,7 @@
         "restricted": "Περιορισμένο/η"
     },
     "powered_by_matrix": "Με την υποστήριξη του Matrix",
-    "powered_by_matrix_with_logo": "Αποκεντρωμένη, κρυπτογραφημένη συνομιλία και συνεργασία χρησιμοποιώντας το $matrixLogo",
+    "powered_by_matrix_with_logo": "Αποκεντρωμένη, κρυπτογραφημένη συνομιλία και συνεργασία χρησιμοποιώντας",
     "presence": {
         "away": "Απομακρυσμένος",
         "busy": "Απασχολημένος",
@@ -3105,7 +3105,7 @@
         "voice_call": "Φωνητική κλήση",
         "you_are_presenting": "Παρουσιάζετε"
     },
-    "welcome_to_element": "Καλώς ήλθατε στο Element",
+    "welcome_to_element": "Καλώς ήλθατε στο SOC Connect",
     "widget": {
         "added_by": "Μικροεοεφαρμογή προστέθηκε από",
         "capabilities_dialog": {

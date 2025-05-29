@@ -1751,7 +1751,7 @@
         "restricted": "Begrenset"
     },
     "powered_by_matrix": "Drevet av Matrix",
-    "powered_by_matrix_with_logo": "Desentralisert, kryptert chat og samarbeid drevet av $matrixLogo",
+    "powered_by_matrix_with_logo": "Desentralisert, kryptert chat og samarbeid",
     "presence": {
         "away": "Borte",
         "busy": "Opptatt",
@@ -4003,7 +4003,7 @@
         "you_are_presenting": "Du presenterer"
     },
     "web_default_device_name": "%(appName)s: %(browserName)s på %(osName)s",
-    "welcome_to_element": "Velkommen til Element",
+    "welcome_to_element": "Velkommen til SOC Connect",
     "widget": {
         "added_by": "Modulen ble lagt til av",
         "capabilities_dialog": {

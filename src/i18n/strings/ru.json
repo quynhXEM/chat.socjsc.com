@@ -1670,7 +1670,7 @@
         "restricted": "Ограниченный пользователь"
     },
     "powered_by_matrix": "На технологии Matrix",
-    "powered_by_matrix_with_logo": "Децентрализованное, зашифрованное общение и сотрудничество на основе $matrixLogo",
+    "powered_by_matrix_with_logo": "Децентрализованное, зашифрованное общение и сотрудничество",
     "presence": {
         "away": "Отошёл(ла)",
         "busy": "Занят(а)",
@@ -3772,7 +3772,7 @@
         "you_are_presenting": "Вы представляете"
     },
     "web_default_device_name": "%(appName)s: %(browserName)s на %(osName)s",
-    "welcome_to_element": "Добро пожаловать в Element",
+    "welcome_to_element": "Добро пожаловать в SOC Connect",
     "widget": {
         "added_by": "Виджет добавлен",
         "capabilities_dialog": {

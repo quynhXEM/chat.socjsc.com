@@ -1750,7 +1750,7 @@
         "restricted": "Обмежено"
     },
     "powered_by_matrix": "Працює на Matrix",
-    "powered_by_matrix_with_logo": "Децентралізована, зашифрована бесіда та співпраця на основі $matrixLogo",
+    "powered_by_matrix_with_logo": "Децентралізована, зашифрована бесіда та співпраця ",
     "presence": {
         "away": "Не на зв'язку",
         "busy": "Зайнятий",
@@ -3997,7 +3997,7 @@
         "you_are_presenting": "Ви показуєте"
     },
     "web_default_device_name": "%(appName)s: %(browserName)s на %(osName)s",
-    "welcome_to_element": "Ласкаво просимо до Element",
+    "welcome_to_element": "Ласкаво просимо до SOC Connect",
     "widget": {
         "added_by": "Вджет додано",
         "capabilities_dialog": {

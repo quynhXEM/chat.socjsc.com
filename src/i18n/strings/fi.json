@@ -1510,7 +1510,7 @@
         "restricted": "Rajoitettu"
     },
     "powered_by_matrix": "Moottorina Matrix",
-    "powered_by_matrix_with_logo": "Hajautettu, salattu keskustelu &amp; yhteistyö, taustavoimana $matrixLogo",
+    "powered_by_matrix_with_logo": "Hajautettu, salattu keskustelu &amp; yhteistyö",
     "presence": {
         "away": "Poissa",
         "busy": "Varattu",
@@ -3503,7 +3503,7 @@
         "you_are_presenting": "Esität parhaillaan"
     },
     "web_default_device_name": "%(appName)s: %(browserName)s käyttöjärjestelmällä %(osName)s",
-    "welcome_to_element": "Tervetuloa Element-sovellukseen",
+    "welcome_to_element": "Tervetuloa SOC Connect-sovellukseen",
     "widget": {
         "added_by": "Sovelman lisäsi",
         "capabilities_dialog": {
