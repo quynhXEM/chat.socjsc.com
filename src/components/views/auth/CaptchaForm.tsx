@@ -6,12 +6,10 @@ SPDX-License-Identifier: AGPL-3.0-only OR GPL-3.0-only OR LicenseRef-Element-Com
 Please see LICENSE files in the repository root for full details.
 */
 
-import React, { type JSX, createRef } from "react";
+import React, { type JSX, createRef, useEffect } from "react";
 import { logger } from "matrix-js-sdk/src/logger";
 
 import { _t } from "../../../languageHandler";
-
-const DIV_ID = "mx_recaptcha";
 
 interface ICaptchaFormProps {
     sitePublicKey: string;
@@ -22,16 +20,34 @@ interface ICaptchaFormState {
     errorText?: string;
 }
 
+declare global {
+    interface Window {
+        turnstile?: {
+            render: (
+                container: string | HTMLElement,
+                options: {
+                    "sitekey": string;
+                    "callback": (token: string) => void;
+                    "refresh-expired": string;
+                },
+            ) => string;
+            reset: (widgetId: string) => void;
+        };
+        onloadTurnstileCallback?: () => void;
+    }
+}
+
 /**
- * A pure UI component which displays a captcha form.
+ * A pure UI component which displays a Cloudflare Turnstile captcha form.
  */
 export default class CaptchaForm extends React.Component<ICaptchaFormProps, ICaptchaFormState> {
     public static defaultProps = {
         onCaptchaResponse: () => {},
     };
 
-    private captchaWidgetId?: string;
-    private recaptchaContainer = createRef<HTMLDivElement>();
+    private widgetId?: string;
+    private turnstileContainer = createRef<HTMLDivElement>();
+    private scriptLoaded = false;
 
     public constructor(props: ICaptchaFormProps) {
         super(props);
@@ -42,83 +58,83 @@ export default class CaptchaForm extends React.Component<ICaptchaFormProps, ICap
     }
 
     public componentDidMount(): void {
-        // Just putting a script tag into the returned jsx doesn't work, annoyingly,
-        // so we do this instead.
-        if (this.isRecaptchaReady()) {
-            // already loaded
-            this.onCaptchaLoaded();
-        } else {
-            logger.log("Loading recaptcha script...");
-            window.mxOnRecaptchaLoaded = () => {
-                this.onCaptchaLoaded();
-            };
-            const scriptTag = document.createElement("script");
-            scriptTag.setAttribute(
-                "src",
-                `https://www.recaptcha.net/recaptcha/api.js?onload=mxOnRecaptchaLoaded&render=explicit`,
-            );
-            this.recaptchaContainer.current?.appendChild(scriptTag);
+        this.loadTurnstileScript();
+    }
+
+    public componentDidUpdate(prevProps: ICaptchaFormProps): void {
+        // Re-render Turnstile if public key changes
+        if (prevProps.sitePublicKey !== this.props.sitePublicKey) {
+            this.resetTurnstile();
+            this.renderTurnstile();
         }
     }
 
     public componentWillUnmount(): void {
-        this.resetRecaptcha();
-        // Resettting the captcha does not clear the challenge overlay from the body in android webviews.
-        // Search for an iframe with the challenge src and remove it's topmost ancestor from the body.
-        // TODO: Remove this when the "mobile_register" page is retired.
-        const iframes = document.querySelectorAll("iframe");
-        for (const iframe of iframes) {
-            if (iframe.src.includes("https://www.recaptcha.net/recaptcha/api2/bframe")) {
-                let parentBeforeBody: HTMLElement | null = iframe;
-                do {
-                    parentBeforeBody = parentBeforeBody.parentElement;
-                } while (parentBeforeBody?.parentElement && parentBeforeBody.parentElement != document.body);
-                parentBeforeBody?.remove();
-            }
+        this.resetTurnstile();
+        // Clean up global callback
+        if (window.onloadTurnstileCallback === this.onTurnstileLoaded) {
+            window.onloadTurnstileCallback = undefined;
         }
     }
 
-    // Borrowed directly from: https://github.com/codeep/react-recaptcha-google/commit/e118fa5670fa268426969323b2e7fe77698376ba
-    private isRecaptchaReady(): boolean {
+    private loadTurnstileScript(): void {
+        if (this.isTurnstileReady()) {
+            this.onTurnstileLoaded();
+            return;
+        }
+
+        if (!document.querySelector("script[src*='turnstile']")) {
+            window.onloadTurnstileCallback = () => {
+                this.scriptLoaded = true;
+                this.onTurnstileLoaded();
+            };
+            const scriptTag = document.createElement("script");
+            scriptTag.setAttribute(
+                "src",
+                "https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback&render=explicit",
+            );
+            document.body.appendChild(scriptTag);
+        } else if (!this.scriptLoaded) {
+            // Script exists but hasn't loaded yet
+            window.onloadTurnstileCallback = () => {
+                this.scriptLoaded = true;
+                this.onTurnstileLoaded();
+            };
+        } else {
+            this.onTurnstileLoaded();
+        }
+    }
+
+    private isTurnstileReady(): boolean {
         return (
             typeof window !== "undefined" &&
-            typeof global.grecaptcha !== "undefined" &&
-            typeof global.grecaptcha.render === "function"
+            typeof window.turnstile !== "undefined" &&
+            typeof window.turnstile.render === "function"
         );
     }
 
-    private renderRecaptcha(divId: string): void {
-        if (!this.isRecaptchaReady()) {
-            logger.error("grecaptcha not loaded!");
-            throw new Error("Recaptcha did not load successfully");
+    private renderTurnstile(): void {
+        const container = this.turnstileContainer.current;
+        if (!container || !this.isTurnstileReady()) {
+            return;
         }
+
+        // Reset any existing widget
+        this.resetTurnstile();
 
         const publicKey = this.props.sitePublicKey;
         if (!publicKey) {
-            logger.error("No public key for recaptcha!");
-            throw new Error("This server has not supplied enough information for Recaptcha authentication");
-        }
-
-        logger.info(`Rendering to ${divId}`);
-        this.captchaWidgetId = global.grecaptcha?.render(divId, {
-            sitekey: publicKey,
-            callback: this.props.onCaptchaResponse,
-        });
-    }
-
-    private resetRecaptcha(): void {
-        if (this.captchaWidgetId) {
-            global?.grecaptcha?.reset(this.captchaWidgetId);
-        }
-    }
-
-    private onCaptchaLoaded(): void {
-        logger.log("Loaded recaptcha script.");
-        try {
-            this.renderRecaptcha(DIV_ID);
-            // clear error if re-rendered
             this.setState({
-                errorText: undefined,
+                errorText: "This server has not supplied enough information for Turnstile authentication",
+            });
+            return;
+        }
+
+        try {
+            this.widgetId = window.turnstile?.render(container, {
+                sitekey: '0x4AAAAAABfxOk3QuexiBOyI',
+                callback: this.props.onCaptchaResponse,
+                "refresh-expired": "manual"
             });
         } catch (e) {
             this.setState({
@@ -127,16 +143,34 @@ export default class CaptchaForm extends React.Component<ICaptchaFormProps, ICap
         }
     }
 
+    private resetTurnstile(): void {
+        if (this.widgetId && window.turnstile) {
+            try {
+                window.turnstile.reset(this.widgetId);
+            } catch (e) {
+                // Ignore reset errors
+                logger.warn("Error resetting Turnstile:", e);
+            }
+            this.widgetId = undefined;
+        }
+    }
+
+    private onTurnstileLoaded(): void {
+        logger.log("Loaded Turnstile script.");
+        this.renderTurnstile();
+    }
+
     public render(): React.ReactNode {
         let error: JSX.Element | undefined;
         if (this.state.errorText) {
-            error = <div className="error">{this.state.errorText}</div>;
+            error = <div className="error" role="alert">{this.state.errorText}</div>;
         }
 
         return (
-            <div ref={this.recaptchaContainer}>
-                <p>{_t("auth|captcha_description")}</p>
-                <div id={DIV_ID} />
+            <div className="mx_CaptchaForm">
+                <div ref={this.turnstileContainer} className="mx_CaptchaForm_container">
+                    <p>{_t("auth|captcha_description")}</p>
+                </div>
                 {error}
             </div>
         );
