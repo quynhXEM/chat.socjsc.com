@@ -73,9 +73,10 @@ const DEFAULT_CONFIG = {
         registration_disabled: false,
         guests_disabled: true,
         registration_shared_secret: "secret",
-        enable_registration_captcha: true,
-        turnstile_public_key: "0x4AAAAAABfxOk3QuexiBOyI",
-        turnstile_private_key: "0x4AAAAAABfxOgfEw4P9AYR1k4dpP0Ntwm4",
+        enable_registration_captcha: false,
+        recaptcha_public_key: "",
+        recaptcha_private_key: "",
+        recaptcha_bypass_secret: "",
         turn: {
             turn_user_lifetime: "5m",
             turn_uris: null,
