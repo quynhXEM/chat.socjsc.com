@@ -41,12 +41,13 @@ export default class CaptchaForm extends React.Component<ICaptchaFormProps, ICap
     private turnstileWidgetId?: string;
     private turnstileContainer = createRef<HTMLDivElement>();
     private isComponentMounted = false;
+    private isSuccess = false;
 
     constructor(props: ICaptchaFormProps) {
         super(props);
-        this.state = { 
+        this.state = {
             errorText: undefined,
-            isWidgetRendered: false
+            isWidgetRendered: false,
         };
     }
 
@@ -83,7 +84,7 @@ export default class CaptchaForm extends React.Component<ICaptchaFormProps, ICap
             const script = document.createElement("script");
             script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
             script.async = true;
-            
+
             script.onload = () => {
                 if (this.isTurnstileReady()) {
                     resolve();
@@ -91,7 +92,7 @@ export default class CaptchaForm extends React.Component<ICaptchaFormProps, ICap
                     reject(new Error("Turnstile script loaded but not ready"));
                 }
             };
-            
+
             script.onerror = () => {
                 reject(new Error("Failed to load Turnstile script"));
             };
@@ -121,7 +122,7 @@ export default class CaptchaForm extends React.Component<ICaptchaFormProps, ICap
         } catch (error) {
             if (this.isComponentMounted) {
                 this.setState({
-                    errorText: error instanceof Error ? error.message : String(error)
+                    errorText: error instanceof Error ? error.message : String(error),
                 });
             }
         }
@@ -139,28 +140,28 @@ export default class CaptchaForm extends React.Component<ICaptchaFormProps, ICap
 
         try {
             const publicKey = "0x4AAAAAABfxOk3QuexiBOyI";
-            logger.info("Rendering Turnstile widget");
-
-            this.turnstileWidgetId = window.turnstile?.render(this.turnstileContainer.current, {
-                sitekey: publicKey,
-                callback: (token: string) => {
-                    if (this.isComponentMounted) {
-                        logger.info("Turnstile verification successful");
+            if (!this.isSuccess) {
+                logger.info("Rendering Turnstile widget");
+                this.turnstileWidgetId = window.turnstile?.render(this.turnstileContainer.current, {
+                    sitekey: publicKey,
+                    callback: (token: string) => {
+                        logger.info("Turnstile verification successful", token);
                         this.props.onCaptchaResponse(token);
-                    }
-                },
-            });
+                        this.isSuccess = true;
+                    },
+                });
 
-            turnstileWidgetCount++;
-            this.setState({ 
-                isWidgetRendered: true,
-                errorText: undefined 
-            });
+                turnstileWidgetCount++;
+                this.setState({
+                    isWidgetRendered: true,
+                    errorText: undefined,
+                });
+            }
         } catch (e) {
             logger.error("Error rendering Turnstile:", e);
             if (this.isComponentMounted) {
                 this.setState({
-                    errorText: e instanceof Error ? e.message : String(e)
+                    errorText: e instanceof Error ? e.message : String(e),
                 });
             }
         }
@@ -173,14 +174,20 @@ export default class CaptchaForm extends React.Component<ICaptchaFormProps, ICap
 
     public componentWillUnmount(): void {
         this.isComponentMounted = false;
-        
+
         if (this.turnstileWidgetId && window.turnstile) {
             try {
                 window.turnstile.reset(this.turnstileWidgetId);
                 turnstileWidgetCount--;
-                
+
                 // Nếu không còn widget nào, reset script promise
                 if (turnstileWidgetCount === 0) {
+                    const script = document.querySelector(
+                        'script[src^="https://challenges.cloudflare.com/turnstile/"]',
+                    );
+                    if (script) {
+                        script.remove();
+                    }
                     turnstileScriptPromise = null;
                 }
             } catch (e) {
@@ -193,12 +200,13 @@ export default class CaptchaForm extends React.Component<ICaptchaFormProps, ICap
         return (
             <div>
                 <p>{_t("auth|captcha_description")}</p>
-                <div ref={this.turnstileContainer} id={TURNSTILE_ID}></div>
-                {this.state.errorText && (
-                    <div className="mx_Turnstile_error" style={{ color: "red", marginTop: "8px" }}>
-                        {this.state.errorText}
-                    </div>
-                )}
+                <div
+                    ref={this.turnstileContainer}
+                    id={TURNSTILE_ID}
+                    className="cf-turnstile"
+                    data-sitekey="0x4AAAAAABfxOk3QuexiBOyI"
+                    data-theme="light"
+                ></div>
             </div>
         );
     }

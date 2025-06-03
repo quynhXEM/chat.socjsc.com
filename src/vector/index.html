@@ -32,18 +32,14 @@
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'none';
         style-src 'self' 'unsafe-inline' <%= csp_extra_source %>;
-<<<<<<< Updated upstream
-        script-src 'self' 'wasm-unsafe-eval' https://challenges.cloudflare.com <%= csp_extra_source %>;
-=======
         script-src 'self' 'wasm-unsafe-eval' https://challenges.cloudflare.com/turnstile/v0/ <%= csp_extra_source %>;
->>>>>>> Stashed changes
         img-src * blob: data:;
         connect-src * blob:;
         font-src 'self' data: <%= csp_extra_source %>;
         media-src * blob: data:;
         child-src * blob: data:;
         worker-src 'self' blob: <%= csp_extra_source %>;
-        frame-src * blob: data:;
+        frame-src https://challenges.cloudflare.com/ * blob: data:;
         form-action 'self' <%= csp_extra_source %>;
         manifest-src 'self' <%= csp_extra_source %>;
     ">
@@ -101,6 +97,8 @@
             <div id="mx_Dialog_StaticContainer"></div>
             <div id="mx_Dialog_Container"></div>
             <div id="mx_ContextualMenu_Container"></div>
+            <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
 </body>
 
 </html>
