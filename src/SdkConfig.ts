@@ -18,8 +18,8 @@ import { type DeepReadonly, type Defaultize } from "./@types/common";
 // see element-web config.md for docs, or the IConfigOptions interface for dev docs
 export const DEFAULTS: DeepReadonly<IConfigOptions> = {
     brand: "SOC Connect",
-    help_url: "https://element.io/help",
-    help_encryption_url: "https://element.io/help#encryption",
+    help_url: "https://chat.socjsc.com/help",
+    help_encryption_url: "https://chat.socjsc.com/help#encryption",
     integrations_ui_url: "https://scalar.vector.im/",
     integrations_rest_url: "https://scalar.vector.im/api",
     uisi_autorageshake_app: "element-auto-uisi",
@@ -43,7 +43,7 @@ export const DEFAULTS: DeepReadonly<IConfigOptions> = {
         available: true,
         // eslint-disable-next-line @typescript-eslint/no-require-imports
         logo: require("../res/img/element-desktop-logo.svg").default,
-        url: "https://element.io/get-started",
+        url: "#",
     },
 
     feedback: {

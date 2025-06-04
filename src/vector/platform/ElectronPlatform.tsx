@@ -461,12 +461,12 @@ export default class ElectronPlatform extends BasePlatform {
 
     public get baseUrl(): string {
         // This configuration is element-desktop specific so the types here do not know about it
-        return (SdkConfig.get() as unknown as Record<string, string>)["web_base_url"] ?? "https://app.element.io";
+        return (SdkConfig.get() as unknown as Record<string, string>)["web_base_url"] ?? "https://chat.socjsc.com";
     }
 
     public get defaultOidcClientUri(): string {
         // Default to element.io as our scheme `io.element.desktop` is within its scope on default MAS policies
-        return "https://element.io";
+        return "https://chat.socjsc.com";
     }
 
     public async getOidcClientMetadata(): Promise<OidcRegistrationClientMetadata> {
