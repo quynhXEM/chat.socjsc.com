@@ -1,6 +1,6 @@
 /*
 Copyright 2024 New Vector Ltd.
-Copyright 2022 The Matrix.org Foundation C.I.C.
+Copyright 2022 The connect.socjsc.com Foundation C.I.C.
 
 SPDX-License-Identifier: AGPL-3.0-only OR GPL-3.0-only OR LicenseRef-Element-Commercial
 Please see LICENSE files in the repository root for full details.
@@ -24,13 +24,13 @@ describe("useUserDirectory", () => {
         stubClient();
         cli = MatrixClientPeg.safeGet();
 
-        cli.getDomain = () => "matrix.org";
+        cli.getDomain = () => "connect.socjsc.com";
         cli.getThirdpartyProtocols = () => Promise.resolve({});
         cli.searchUserDirectory = ({ term: query }) =>
             Promise.resolve({
                 results: [
                     {
-                        user_id: "@bob:matrix.org",
+                        user_id: "@bob:connect.socjsc.com",
                         display_name: query,
                     },
                 ],

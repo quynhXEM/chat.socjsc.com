@@ -1,6 +1,6 @@
 /*
 Copyright 2024 New Vector Ltd.
-Copyright 2021 The Matrix.org Foundation C.I.C.
+Copyright 2021 The connect.socjsc.com Foundation C.I.C.
 
 SPDX-License-Identifier: AGPL-3.0-only OR GPL-3.0-only OR LicenseRef-Element-Commercial
 Please see LICENSE files in the repository root for full details.
@@ -121,14 +121,14 @@ describe("linkify-matrix", () => {
                 ]);
             });
         });
-        it("properly parses " + char + "_foonetic_xkcd:matrix.org", () => {
-            const test = "" + char + "_foonetic_xkcd:matrix.org";
+        it("properly parses " + char + "_foonetic_xkcd:connect.socjsc.com", () => {
+            const test = "" + char + "_foonetic_xkcd:connect.socjsc.com";
             const found = linkify.find(test);
             expect(found).toEqual([
                 {
-                    href: char + "_foonetic_xkcd:matrix.org",
+                    href: char + "_foonetic_xkcd:connect.socjsc.com",
                     type,
-                    value: char + "_foonetic_xkcd:matrix.org",
+                    value: char + "_foonetic_xkcd:connect.socjsc.com",
                     start: 0,
                     end: test.length,
                     isLink: true,
@@ -347,7 +347,7 @@ describe("linkify-matrix", () => {
         genTests("@");
 
         it("allows dots in localparts", () => {
-            const test = "@test.:matrix.org";
+            const test = "@test.:connect.socjsc.com";
             const found = linkify.find(test);
             expect(found).toEqual([
                 {
@@ -414,7 +414,7 @@ describe("linkify-matrix", () => {
     });
 
     describe("matrix-prefixed domains", () => {
-        const acceptedDomains = ["matrix.org", "matrix.to", "matrix-help.org", "matrix123.org"];
+        const acceptedDomains = ["connect.socjsc.com", "matrix.to", "matrix-help.org", "matrix123.org"];
         for (const domain of acceptedDomains) {
             it("accepts " + domain, () => {
                 const test = domain;

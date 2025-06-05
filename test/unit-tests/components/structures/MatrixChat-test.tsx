@@ -1,6 +1,6 @@
 /*
 Copyright 2024 New Vector Ltd.
-Copyright 2023 The Matrix.org Foundation C.I.C.
+Copyright 2023 The connect.socjsc.com Foundation C.I.C.
 
 SPDX-License-Identifier: AGPL-3.0-only OR GPL-3.0-only OR LicenseRef-Element-Commercial
 Please see LICENSE files in the repository root for full details.
@@ -296,7 +296,7 @@ describe("<MatrixChat />", () => {
 
     describe("when query params have a OIDC params", () => {
         const issuer = "https://auth.com/";
-        const homeserverUrl = "https://matrix.org";
+        const homeserverUrl = "https://connect.socjsc.com";
         const identityServerUrl = "https://is.org";
         const clientId = "xyz789";
 

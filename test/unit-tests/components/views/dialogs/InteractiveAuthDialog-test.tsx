@@ -1,6 +1,6 @@
 /*
 Copyright 2024 New Vector Ltd.
-Copyright 2022 The Matrix.org Foundation C.I.C.
+Copyright 2022 The connect.socjsc.com Foundation C.I.C.
 Copyright 2016 OpenMarket Ltd
 
 SPDX-License-Identifier: AGPL-3.0-only OR GPL-3.0-only OR LicenseRef-Element-Commercial
@@ -17,7 +17,7 @@ import InteractiveAuthDialog from "../../../../../src/components/views/dialogs/I
 import { clearAllModals, flushPromises, getMockClientWithEventEmitter, unmockClientPeg } from "../../../../test-utils";
 
 describe("InteractiveAuthDialog", function () {
-    const homeserverUrl = "https://matrix.org";
+    const homeserverUrl = "https://connect.socjsc.com";
     const authUrl = "https://auth.com";
     const mockClient = getMockClientWithEventEmitter({
         generateClientSecret: jest.fn().mockReturnValue("t35tcl1Ent5ECr3T"),

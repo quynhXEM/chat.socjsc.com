@@ -1,6 +1,6 @@
 /*
 Copyright 2024 New Vector Ltd.
-Copyright 2022 The Matrix.org Foundation C.I.C.
+Copyright 2022 The connect.socjsc.com Foundation C.I.C.
 Copyright 2019 New Vector Ltd
 
 SPDX-License-Identifier: AGPL-3.0-only OR GPL-3.0-only OR LicenseRef-Element-Commercial
@@ -64,7 +64,7 @@ describe("Registration", function () {
             return mockClient;
         });
         fetchMock.catch(404);
-        fetchMock.get("https://matrix.org/_matrix/client/versions", {
+        fetchMock.get("https://connect.socjsc.com/_matrix/client/versions", {
             unstable_features: {},
             versions: SERVER_SUPPORTED_MATRIX_VERSIONS,
         });
@@ -87,7 +87,7 @@ describe("Registration", function () {
         onServerConfigChange: jest.fn(),
     };
 
-    const defaultHsUrl = "https://matrix.org";
+    const defaultHsUrl = "https://connect.socjsc.com";
     const defaultIsUrl = "https://vector.im";
 
     function getRawComponent(
@@ -142,7 +142,7 @@ describe("Registration", function () {
         await waitForElementToBeRemoved(() => screen.queryAllByLabelText("Loading…"));
 
         fireEvent.click(container.querySelector(".mx_SSOButton")!);
-        expect(mockClient.baseUrl).toBe("https://matrix.org");
+        expect(mockClient.baseUrl).toBe("https://connect.socjsc.com");
 
         fetchMock.get("https://server2/_matrix/client/versions", {
             unstable_features: {},

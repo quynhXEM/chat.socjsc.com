@@ -1,6 +1,6 @@
 /*
 Copyright 2024 New Vector Ltd.
-Copyright 2022, 2023 The Matrix.org Foundation C.I.C.
+Copyright 2022, 2023 The connect.socjsc.com Foundation C.I.C.
 
 SPDX-License-Identifier: AGPL-3.0-only OR GPL-3.0-only OR LicenseRef-Element-Commercial
 Please see LICENSE files in the repository root for full details.
@@ -88,9 +88,9 @@ export function createTestClient(): MatrixClient {
     const client = {
         getHomeserverUrl: jest.fn(),
         getIdentityServerUrl: jest.fn(),
-        getDomain: jest.fn().mockReturnValue("matrix.org"),
-        getUserId: jest.fn().mockReturnValue("@userId:matrix.org"),
-        getSafeUserId: jest.fn().mockReturnValue("@userId:matrix.org"),
+        getDomain: jest.fn().mockReturnValue("connect.socjsc.com"),
+        getUserId: jest.fn().mockReturnValue("@userId:connect.socjsc.com"),
+        getSafeUserId: jest.fn().mockReturnValue("@userId:connect.socjsc.com"),
         getUserIdLocalpart: jest.fn().mockResolvedValue("userId"),
         getUser: jest.fn().mockReturnValue({ on: jest.fn(), off: jest.fn() }),
         getDevice: jest.fn(),
@@ -98,7 +98,7 @@ export function createTestClient(): MatrixClient {
         deviceId: "ABCDEFGHI",
         getDevices: jest.fn().mockResolvedValue({ devices: [{ device_id: "ABCDEFGHI" }] }),
         getSessionId: jest.fn().mockReturnValue("iaszphgvfku"),
-        credentials: { userId: "@userId:matrix.org" },
+        credentials: { userId: "@userId:connect.socjsc.com" },
 
         secretStorage: {
             get: jest.fn(),
@@ -295,7 +295,7 @@ export function createTestClient(): MatrixClient {
         requestMsisdnToken: jest.fn(),
         submitMsisdnToken: jest.fn(),
         getMediaConfig: jest.fn(),
-        baseUrl: "https://matrix-client.matrix.org",
+        baseUrl: "https://matrix-client.connect.socjsc.com",
         matrixRTC: createStubMatrixRTC(),
         isFallbackICEServerAllowed: jest.fn().mockReturnValue(false),
         getAuthIssuer: jest.fn(),

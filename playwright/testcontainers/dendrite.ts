@@ -29,7 +29,7 @@ const DEFAULT_CONFIG = {
         },
         well_known_server_name: "",
         well_known_client_name: "",
-        trusted_third_party_id_servers: ["matrix.org", "vector.im"],
+        trusted_third_party_id_servers: ["connect.socjsc.com", "vector.im"],
         disable_federation: false,
         presence: {
             enable_inbound: false,
@@ -37,7 +37,7 @@ const DEFAULT_CONFIG = {
         },
         report_stats: {
             enabled: false,
-            endpoint: "https://matrix.org/report-usage-stats/push",
+            endpoint: "https://connect.socjsc.com/report-usage-stats/push",
         },
         server_notices: {
             enabled: false,
@@ -95,7 +95,7 @@ const DEFAULT_CONFIG = {
         disable_http_keepalives: false,
         key_perspectives: [
             {
-                server_name: "matrix.org",
+                server_name: "connect.socjsc.com",
                 keys: [
                     {
                         key_id: "ed25519:auto",
