@@ -644,9 +644,10 @@ export default class Registration extends React.Component<IProps, IState> {
                     {},
                     {
                         a: (sub) => (
-                            <AccessibleButton kind="link_inline" onClick={this.onLoginClick}>
+                            <AccessibleButton kind="link" onClick={this.onLoginClick}>
                                 {sub}
                             </AccessibleButton>
+                            
                         ),
                     },
                 )}
@@ -757,8 +758,9 @@ export default class Registration extends React.Component<IProps, IState> {
                         {this.renderRegisterComponent()}
                     </div>
                     <div className="mx_Register_footerActions">
-                        {goBack}
-                        {signIn}
+                        <AccessibleButton kind="link" onClick={this.onLoginClick}>
+                            {_t("auth|sign_in_instead")}
+                        </AccessibleButton>
                     </div>
                 </Fragment>
             );

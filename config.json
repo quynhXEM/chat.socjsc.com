@@ -28,16 +28,21 @@
     "show_labs_settings": false,
     "features": {},
     "default_federate": true,
-    "default_theme": "light",
+    "default_theme": "dark",
+    "default_layout": "bubble",
     "room_directory": {
-        "servers": ["connect.socjsc.com"]
+        "servers": [
+            "connect.socjsc.com"
+        ]
     },
     "enable_presence_by_hs_url": {
         "https://matrix.org": false,
         "https://matrix-client.matrix.org": false
     },
     "setting_defaults": {
-        "breadcrumbs": true
+        "breadcrumbs": true,
+        "layout": "bubble",
+        "theme": "dark"
     },
     "jitsi": {
         "preferred_domain": "meet.element.io"
