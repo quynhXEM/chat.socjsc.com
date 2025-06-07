@@ -168,7 +168,7 @@ export default class ServerPickerDialog extends React.PureComponent<IProps, ISta
     public render(): React.ReactNode {
         let text: string | undefined;
         if (this.defaultServer.hsName === "connect.socjsc.com") {
-            text = _t("auth|server_picker_connect.socjsc.com");
+            text = _t("auth|server_picker_description_connect.socjsc.com");
         }
 
         let defaultServerName: React.ReactNode = this.defaultServer.hsName;
