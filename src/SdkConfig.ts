@@ -18,10 +18,7 @@ import { type DeepReadonly, type Defaultize } from "./@types/common";
 // see element-web config.md for docs, or the IConfigOptions interface for dev docs
 export const DEFAULTS: DeepReadonly<IConfigOptions> = {
     brand: "SOC Connect",
-    help_url: "https://chat.socjsc.com/help",
-    help_encryption_url: "https://chat.socjsc.com/help#encryption",
-    integrations_ui_url: "https://scalar.vector.im/",
-    integrations_rest_url: "https://scalar.vector.im/api",
+    help_url: "https://docs.socjsc.com/docs/customer-support/faq/",
     uisi_autorageshake_app: "element-auto-uisi",
     show_labs_settings: false,
     force_verification: false,

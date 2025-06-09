@@ -367,8 +367,8 @@ export function tryTransformPermalinkToLocalHref(permalink: string): string {
     if (
         !permalink.startsWith("http:") &&
         !permalink.startsWith("https:") &&
-        !permalink.startsWith("matrix:") &&
-        !permalink.startsWith("vector:") // Element Desktop
+        !permalink.startsWith("connect:") &&
+        !permalink.startsWith("chat:") // Element Desktop
     ) {
         return permalink;
     }

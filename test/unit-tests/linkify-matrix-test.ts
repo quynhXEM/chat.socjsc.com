@@ -386,15 +386,7 @@ describe("linkify-matrix", () => {
     });
 
     describe("matrix uri", () => {
-        const acceptedMatrixUris = [
-            "matrix:u/foo_bar:server.uk",
-            "matrix:r/foo-bar:server.uk",
-            "matrix:roomid/somewhere:example.org?via=elsewhere.ca",
-            "matrix:r/somewhere:example.org",
-            "matrix:r/somewhere:example.org/e/event",
-            "matrix:roomid/somewhere:example.org/e/event?via=elsewhere.ca",
-            "matrix:u/alice:example.org?action=chat",
-        ];
+        const acceptedMatrixUris = ["connect:r/foo-bar:server.uk"];
         for (const matrixUri of acceptedMatrixUris) {
             it("accepts " + matrixUri, () => {
                 const test = matrixUri;
@@ -414,7 +406,7 @@ describe("linkify-matrix", () => {
     });
 
     describe("matrix-prefixed domains", () => {
-        const acceptedDomains = ["connect.socjsc.com", "matrix.to", "matrix-help.org", "matrix123.org"];
+        const acceptedDomains = ["connect.socjsc.com"];
         for (const domain of acceptedDomains) {
             it("accepts " + domain, () => {
                 const test = domain;

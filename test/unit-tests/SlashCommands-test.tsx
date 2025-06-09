@@ -282,7 +282,7 @@ describe("SlashCommands", () => {
         });
 
         it("should handle connect.socjsc.com permalinks", () => {
-            command.run(client, roomId, null, "https://matrix.to/#/!roomId:server/$eventId");
+            command.run(client, roomId, null, "https://chat.socjsc.com/#/!roomId:server/$eventId");
             expect(dispatcher.dispatch).toHaveBeenCalledWith(
                 expect.objectContaining({
                     action: "view_room",

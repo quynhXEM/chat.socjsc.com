@@ -67,7 +67,7 @@ describe("<RoomTopic/>", () => {
 
     it("should capture permalink clicks", () => {
         const permalink =
-            "https://matrix.to/#/!pMBteVpcoJRdCJxDmn:connect.socjsc.com/$K4Kg0fL-GKpW1EQ6lS36bP4eUXadWJFkdK_FH73Df8A?via=connect.socjsc.com";
+            "https://chat.socjsc.com/#/!pMBteVpcoJRdCJxDmn:connect.socjsc.com/$K4Kg0fL-GKpW1EQ6lS36bP4eUXadWJFkdK_FH73Df8A?via=connect.socjsc.com";
         const expectedHref =
             "http://localhost/#/room/!pMBteVpcoJRdCJxDmn:connect.socjsc.com/$K4Kg0fL-GKpW1EQ6lS36bP4eUXadWJFkdK_FH73Df8A?via=connect.socjsc.com";
         runClickTest(`... ${permalink} ...`, permalink);

@@ -61,7 +61,7 @@ describe("<EditMessageComposer/>", () => {
             "body": "hey Bob and Charlie",
             "format": "org.matrix.custom.html",
             "formatted_body":
-                'hey <a href="https://matrix.to/#/@bob:server.org">Bob</a> and <a href="https://matrix.to/#/@charlie:server.org">Charlie</a>',
+                'hey <a href="https://chat.socjsc.com/#/@bob:server.org">Bob</a> and <a href="https://chat.socjsc.com/#/@charlie:server.org">Charlie</a>',
             "m.mentions": {
                 user_ids: ["@bob:server.org", "@charlie:server.org"],
             },
@@ -421,7 +421,7 @@ describe("<EditMessageComposer/>", () => {
             user: "@bert:test",
             room: roomId,
             content: {
-                "body": 'reply that mentions <a href="https://matrix.to/#/@bob:server.org">Bob</a>',
+                "body": 'reply that mentions <a href="https://chat.socjsc.com/#/@bob:server.org">Bob</a>',
                 "msgtype": "m.text",
                 "m.relates_to": {
                     "m.in_reply_to": {
@@ -512,7 +512,7 @@ describe("<EditMessageComposer/>", () => {
                 user: "@bert:test",
                 room: roomId,
                 content: {
-                    "body": `reply that mentions the sender of the message we replied to <a href="https://matrix.to/#/${originalEvent.getSender()!}">Ernie</a>`,
+                    "body": `reply that mentions the sender of the message we replied to <a href="https://chat.socjsc.com/#/${originalEvent.getSender()!}">Ernie</a>`,
                     "msgtype": "m.text",
                     "m.relates_to": {
                         "m.in_reply_to": {

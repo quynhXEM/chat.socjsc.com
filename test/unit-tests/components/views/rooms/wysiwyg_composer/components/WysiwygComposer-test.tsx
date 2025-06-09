@@ -159,7 +159,7 @@ describe("WysiwygComposer", () => {
         const mockCompletions: ICompletion[] = [
             {
                 type: "user",
-                href: "https://matrix.to/#/@user_1:element.io",
+                href: "https://chat.socjsc.com/#/@user_1:element.io",
                 completion: "user_1",
                 completionId: "@user_1:host.local",
                 range: { start: 1, end: 1 },
@@ -167,7 +167,7 @@ describe("WysiwygComposer", () => {
             },
             {
                 type: "user",
-                href: "https://matrix.to/#/@user_2:element.io",
+                href: "https://chat.socjsc.com/#/@user_2:element.io",
                 completion: "user_2",
                 completionId: "@user_2:host.local",
                 range: { start: 1, end: 1 },
@@ -184,7 +184,7 @@ describe("WysiwygComposer", () => {
             },
             {
                 type: "room",
-                href: "https://matrix.to/#/#room_1:element.io",
+                href: "https://chat.socjsc.com/#/#room_1:element.io",
                 completion: "#room_with_completion_id",
                 completionId: "@room_1:host.local",
                 range: { start: 1, end: 1 },
@@ -192,7 +192,7 @@ describe("WysiwygComposer", () => {
             },
             {
                 type: "room",
-                href: "https://matrix.to/#/#room_2:element.io",
+                href: "https://chat.socjsc.com/#/#room_2:element.io",
                 completion: "#room_without_completion_id",
                 range: { start: 1, end: 1 },
                 component: <div>room_without_completion_id</div>,

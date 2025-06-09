@@ -204,7 +204,7 @@ describe("bodyToNode", () => {
                 "body": "> <@sender1:server> Test\n\n🥰",
                 "format": "org.matrix.custom.html",
                 "formatted_body":
-                    '<mx-reply><blockquote><a href="https://matrix.to/#/!roomId:server/$eventId">In reply to</a> <a href="https://matrix.to/#/@sender1:server">@sender1:server</a><br>Test</blockquote></mx-reply>🥰',
+                    '<mx-reply><blockquote><a href="https://chat.socjsc.com/#/!roomId:server/$eventId">In reply to</a> <a href="https://chat.socjsc.com/#/@sender1:server">@sender1:server</a><br>Test</blockquote></mx-reply>🥰',
                 "m.relates_to": {
                     "m.in_reply_to": {
                         event_id: "$eventId",

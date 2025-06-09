@@ -29,7 +29,7 @@ const DEFAULT_CONFIG = {
         },
         well_known_server_name: "",
         well_known_client_name: "",
-        trusted_third_party_id_servers: ["connect.socjsc.com", "vector.im"],
+        trusted_third_party_id_servers: ["connect.socjsc.com"],
         disable_federation: false,
         presence: {
             enable_inbound: false,

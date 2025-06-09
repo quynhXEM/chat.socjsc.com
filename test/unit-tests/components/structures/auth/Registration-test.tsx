@@ -88,7 +88,7 @@ describe("Registration", function () {
     };
 
     const defaultHsUrl = "https://connect.socjsc.com";
-    const defaultIsUrl = "https://vector.im";
+    const defaultIsUrl = "";
 
     function getRawComponent(
         hsUrl = defaultHsUrl,

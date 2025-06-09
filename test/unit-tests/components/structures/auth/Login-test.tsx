@@ -74,7 +74,7 @@ describe("Login", function () {
 
     function getRawComponent(
         hsUrl = "https://connect.socjsc.com",
-        isUrl = "https://vector.im",
+        isUrl = "",
         delegatedAuthentication?: OidcClientConfig,
     ) {
         return (
@@ -365,7 +365,7 @@ describe("Login", function () {
 
     describe("OIDC native flow", () => {
         const hsUrl = "https://connect.socjsc.com";
-        const isUrl = "https://vector.im";
+        const isUrl ="";
         const issuer = "https://test.com/";
         const delegatedAuth = makeDelegatedAuthConfig(issuer);
         beforeEach(() => {
