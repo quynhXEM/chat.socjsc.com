@@ -611,12 +611,12 @@ module.exports = (env, argv) => {
             }),
 
             // This is the mobile guide's entry point (separate for faster mobile loading)
-            // new HtmlWebpackPlugin({
-            //     template: "./src/vector/mobile_guide/index.html",
-            //     filename: "mobile_guide/index.html",
-            //     minify: false,
-            //     chunks: ["mobileguide"],
-            // }),
+            new HtmlWebpackPlugin({
+                template: "./src/vector/mobile_guide/index.html",
+                filename: "mobile_guide/index.html",
+                minify: false,
+                chunks: ["mobileguide"],
+            }),
 
             // These are the static error pages for when the javascript env is *really unsupported*
             // new HtmlWebpackPlugin({
