@@ -2830,6 +2830,7 @@
         },
         "mab": {
             "copy_link_thread": "Sao chép liên kết vào chủ đề",
+            "remove_thread": "Xóa chủ đề",
             "label": "Hành động tin nhắn",
             "view_in_room": "Xem phòng này"
         },

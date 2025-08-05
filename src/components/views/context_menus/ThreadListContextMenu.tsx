@@ -113,6 +113,12 @@ const ThreadListContextMenu: React.FC<ThreadListContextMenuProps> = ({
                                 iconClassName="mx_ThreadPanel_copyLinkToThread"
                             />
                         )}
+                        <IconizedContextMenuOption
+                            data-testid="remove-thread"
+                            onClick={(e) => console.log("Xóa Threads")}
+                            label={_t("timeline|mab|remove_thread")}
+                            iconClassName="mx_ThreadPanel_removeThread"
+                        />
                     </IconizedContextMenuOptionList>
                 </IconizedContextMenu>
             )}
