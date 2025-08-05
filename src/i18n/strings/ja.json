@@ -2858,6 +2858,7 @@
             "removed": "%(widgetName)sウィジェットが%(senderName)sによって削除されました"
         },
         "mab": {
+            "remove_thread": "スレッドを削除",
             "collapse_reply_chain": "引用を折りたたむ",
             "copy_link_thread": "スレッドへのリンクをコピー",
             "expand_reply_chain": "引用を展開",

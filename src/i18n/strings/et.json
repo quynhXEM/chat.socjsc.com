@@ -3563,6 +3563,7 @@
         },
         "mab": {
             "collapse_reply_chain": "Peida viidatud sisu",
+            "remove_thread": "Eemalda jutulõng",
             "copy_link_thread": "Kopeeri jutulõnga link",
             "expand_reply_chain": "Näita viidatud sisu",
             "label": "Tegevused sõnumitega",

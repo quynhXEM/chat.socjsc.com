@@ -2477,6 +2477,7 @@
             "removed": "%(widgetName)sვიჯეტი ამოღებულია %(senderName)s"
         },
         "mab": {
+            "remove_thread": "თემის წაშლა",
             "collapse_reply_chain": "ციტატების ჩაკეცვა",
             "copy_link_thread": "დააკოპირეთ ბმული თემაში",
             "expand_reply_chain": "ციტატების გაფართოება",

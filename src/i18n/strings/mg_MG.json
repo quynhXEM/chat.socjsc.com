@@ -3105,6 +3105,7 @@
             "removed": "%(widgetName)swidget nesorina avy%(senderName)s"
         },
         "mab": {
+            "remove_thread": "Atsaharo ny kofehy",
             "collapse_reply_chain": "Atsaharo ny teny nindramina",
             "copy_link_thread": "Adikao ny rohy mankany amin'ny kofehy",
             "expand_reply_chain": "Hanitatra ny teny nindramina",

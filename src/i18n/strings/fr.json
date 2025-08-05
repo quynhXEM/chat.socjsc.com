@@ -3559,6 +3559,7 @@
             "removed": "Widget %(widgetName)s supprimé par %(senderName)s"
         },
         "mab": {
+            "remove_thread": "Supprimer le fil",
             "collapse_reply_chain": "Réduire les citations",
             "copy_link_thread": "Copier le lien du fil de discussion",
             "expand_reply_chain": "Étendre les citations",

@@ -3567,6 +3567,7 @@
             "removed": "Widżet %(widgetName)s został usunięty przez %(senderName)s"
         },
         "mab": {
+            "remove_thread": "Usuń wątek",
             "collapse_reply_chain": "Zwiń cytaty",
             "copy_link_thread": "Kopiuj link do wątku",
             "expand_reply_chain": "Rozwiń cytaty",

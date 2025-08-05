@@ -3561,6 +3561,7 @@
             "removed": "%(widgetName)s-modulen ble fjernet av %(senderName)s"
         },
         "mab": {
+            "remove_thread": "Fjern tråd",
             "collapse_reply_chain": "Skjul sitater",
             "copy_link_thread": "Kopier lenke til tråd",
             "expand_reply_chain": "Utvid sitater",

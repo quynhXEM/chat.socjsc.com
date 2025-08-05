@@ -3570,6 +3570,7 @@
         },
         "mab": {
             "collapse_reply_chain": "Sbalit citace",
+            "remove_thread": "Odstranit vlákno",
             "copy_link_thread": "Kopírovat odkaz na vlákno",
             "expand_reply_chain": "Rozbalit citace",
             "label": "Akce zprávy",

@@ -2003,6 +2003,7 @@
             "removed": "%(senderName)s pašalino %(widgetName)s valdiklį"
         },
         "mab": {
+            "remove_thread": "Pašalinti temą",
             "copy_link_thread": "Kopijuoti nuorodą į temą",
             "label": "Žinutės veiksmai",
             "view_in_room": "Peržiūrėti kambaryje"

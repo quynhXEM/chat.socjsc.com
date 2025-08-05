@@ -3533,6 +3533,7 @@
             "removed": "%(senderName)s eltávolította a %(widgetName)s kisalkalmazást"
         },
         "mab": {
+            "remove_thread": "Üzenetszál törlése",
             "collapse_reply_chain": "Idézetek összecsukása",
             "copy_link_thread": "Hivatkozás másolása az üzenetszálba",
             "expand_reply_chain": "Idézetek megjelenítése",

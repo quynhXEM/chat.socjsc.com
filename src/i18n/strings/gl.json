@@ -2638,6 +2638,7 @@
             "removed": "%(widgetName)s eliminado por %(senderName)s"
         },
         "mab": {
+            "remove_thread": "Eliminar conversa",
             "collapse_reply_chain": "Pregar as citas",
             "copy_link_thread": "Copiar ligazón da conversa",
             "expand_reply_chain": "Despregar as citas",

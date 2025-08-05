@@ -2567,6 +2567,7 @@
             "removed": "%(widgetName)s viðmótshluti var fjarlægður af %(senderName)s"
         },
         "mab": {
+            "remove_thread": "Eyða spjallþráði",
             "collapse_reply_chain": "Fella saman tilvitnanir",
             "copy_link_thread": "Afrita tengil á spjallþráð",
             "expand_reply_chain": "Fletta út tilvitnunum",

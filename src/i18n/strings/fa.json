@@ -1988,6 +1988,7 @@
             "removed": "ویجت %(widgetName)s توسط %(senderName)s حذف گردید"
         },
         "mab": {
+            "remove_thread": "حذف رشته",
             "label": "اقدامات پیام"
         },
         "mjolnir": {

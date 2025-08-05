@@ -2689,6 +2689,7 @@
             "removed": "%(widgetName)s-widget verwijderd door %(senderName)s"
         },
         "mab": {
+            "remove_thread": "Draad verwijderen",
             "collapse_reply_chain": "Citaten invouwen",
             "copy_link_thread": "Kopieer link naar draad",
             "expand_reply_chain": "Citaten uitvouwen",

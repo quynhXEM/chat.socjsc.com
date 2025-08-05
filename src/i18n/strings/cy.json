@@ -3375,6 +3375,7 @@
         },
         "mab": {
             "collapse_reply_chain": "Crebachu dyfyniadau",
+            "remove_thread": "Dileu'r edefyn",
             "copy_link_thread": "Copïo dolen i'r edefyn",
             "expand_reply_chain": "Ehangu dyfyniadau",
             "label": "Camau Gweithredu Neges",
