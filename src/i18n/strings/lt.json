@@ -2006,7 +2006,8 @@
             "remove_thread": "Pašalinti temą",
             "copy_link_thread": "Kopijuoti nuorodą į temą",
             "label": "Žinutės veiksmai",
-            "view_in_room": "Peržiūrėti kambaryje"
+            "view_in_room": "Peržiūrėti kambaryje",
+            "action_no_disable": "Ar tikrai norite pašalinti šią temą? Ši veiksma negrįžtama."
         },
         "mjolnir": {
             "changed_rule_glob": "%(senderName)s atnaujino draudimo taisyklę, kuri sutapo su %(oldGlob)s į sutampančią su %(newGlob)s dėl %(reason)s",
