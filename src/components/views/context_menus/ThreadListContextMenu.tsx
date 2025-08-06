@@ -88,7 +88,7 @@ const ThreadListContextMenu: React.FC<ThreadListContextMenuProps> = ({
                 if (thread) {
                     // Modal xác nhận
                     Modal.createDialog(BaseDialog, {
-                        title: `${_t("timeline|mab|remove_thread")} ${_t("timeline|mab|remove_thread")}`,
+                        title: `${_t("timeline|mab|remove_thread")} ${_t("common|threads")}`,
                         className: "mx_ConfirmDeleteThreadDialog",
                         contentId: "mx_ConfirmDeleteThreadDialog_content",
                         children: (
