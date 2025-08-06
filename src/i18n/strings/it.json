@@ -3124,6 +3124,7 @@
             "removed": "Widget %(widgetName)s rimosso da %(senderName)s"
         },
         "mab": {
+            "remove_thread": "Rimuovi conversazione",
             "collapse_reply_chain": "Riduci le citazioni",
             "copy_link_thread": "Copia link nella conversazione",
             "expand_reply_chain": "Espandi le citazioni",

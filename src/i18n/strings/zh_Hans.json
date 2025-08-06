@@ -2795,6 +2795,7 @@
             "removed": "%(senderName)s 移除了 %(widgetName)s 挂件"
         },
         "mab": {
+            "remove_thread": "删除线程",
             "collapse_reply_chain": "折叠引号",
             "copy_link_thread": "复制到消息列的链接",
             "expand_reply_chain": "展开引号",

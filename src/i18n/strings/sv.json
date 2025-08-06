@@ -3535,6 +3535,7 @@
             "removed": "%(widgetName)s-widget har tagits bort av %(senderName)s"
         },
         "mab": {
+            "remove_thread": "Ta bort tråd",
             "collapse_reply_chain": "Kollapsa citat",
             "copy_link_thread": "Kopiera länk till tråd",
             "expand_reply_chain": "Expandera citat",

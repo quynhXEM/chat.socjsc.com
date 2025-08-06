@@ -2640,7 +2640,7 @@
         },
         "error_no_renderer": "Sự kiện này không thể được hiển thị",
         "error_rendering_message": "Không thể tải tin nhắn này",
-        "historical_messages_unavailable": "Bạn khồng thể thấy các tin nhắn trước",
+        "historical_messages_unavailable": "Bạn không thể thấy các tin nhắn trước",
         "in_room_name": " ở <strong>%(room)s</strong>",
         "io.element.widgets.layout": "%(senderName)s đã cập nhật bố trí của phòng",
         "load_error": {
@@ -2830,6 +2830,7 @@
         },
         "mab": {
             "copy_link_thread": "Sao chép liên kết vào chủ đề",
+            "remove_thread": "Xóa chủ đề",
             "label": "Hành động tin nhắn",
             "view_in_room": "Xem phòng này"
         },

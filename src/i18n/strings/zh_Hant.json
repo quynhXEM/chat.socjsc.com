@@ -3050,6 +3050,7 @@
             "removed": "%(widgetName)s 小工具是由 %(senderName)s 所移除"
         },
         "mab": {
+            "remove_thread": "移除討論串",
             "collapse_reply_chain": "收折引號",
             "copy_link_thread": "複製討論串連結",
             "expand_reply_chain": "展開引號",

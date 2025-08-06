@@ -3351,6 +3351,7 @@
             "removed": "Виджет %(widgetName)s был удален %(senderName)s"
         },
         "mab": {
+            "remove_thread": "Удалить обсуждение",
             "collapse_reply_chain": "Свернуть цитаты",
             "copy_link_thread": "Копировать ссылку на обсуждение",
             "expand_reply_chain": "Развернуть цитаты",

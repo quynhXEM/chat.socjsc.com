@@ -2883,6 +2883,7 @@
             "removed": "componente %(widgetName)s eliminado por %(senderName)s"
         },
         "mab": {
+            "remove_thread": "Eliminar hilo",
             "collapse_reply_chain": "Plegar citas",
             "copy_link_thread": "Copiar enlace al hilo",
             "expand_reply_chain": "Expandir citas",

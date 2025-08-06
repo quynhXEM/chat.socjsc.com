@@ -3561,6 +3561,7 @@
             "removed": "O widget %(widgetName)s foi removido por %(senderName)s"
         },
         "mab": {
+            "remove_thread": "Remover tópico",
             "collapse_reply_chain": "Recolher citações",
             "copy_link_thread": "Copiar ligação para o tópico",
             "expand_reply_chain": "Expandir citações",

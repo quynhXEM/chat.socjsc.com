@@ -3461,6 +3461,7 @@
             "removed": "%(widgetName)s görsel bileşeni %(senderName)s tarafından silindi"
         },
         "mab": {
+            "remove_thread": "Konuyu kaldır",
             "collapse_reply_chain": "Alıntıları daralt",
             "copy_link_thread": "Bağlantıyı konuya kopyala",
             "expand_reply_chain": "Alıntıları genişlet",

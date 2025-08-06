@@ -3560,6 +3560,7 @@
         },
         "mab": {
             "collapse_reply_chain": "Zitate einklappen",
+            "remove_thread": "Thread löschen",
             "copy_link_thread": "Link zu Thread kopieren",
             "expand_reply_chain": "Zitate ausklappen",
             "label": "Nachrichtenaktionen",

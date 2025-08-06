@@ -3103,6 +3103,7 @@
             "removed": "%(senderName)s poisti sovelman %(widgetName)s"
         },
         "mab": {
+            "remove_thread": "Poista ketju",
             "collapse_reply_chain": "Supista lainaukset",
             "copy_link_thread": "Kopioi linkki ketjuun",
             "expand_reply_chain": "Laajenna lainaukset",

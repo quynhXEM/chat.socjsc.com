@@ -2147,6 +2147,7 @@
             "removed": "היישומון %(widgetName)s הוסר על ידי %(senderName)s"
         },
         "mab": {
+            "remove_thread": "הסיר שרשור",
             "copy_link_thread": "העתק קישור לשרשור",
             "label": "פעולות הודעה"
         },

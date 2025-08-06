@@ -3554,6 +3554,7 @@
             "removed": "Widget %(widgetName)s dihapus oleh %(senderName)s"
         },
         "mab": {
+            "remove_thread": "Hapus utasan",
             "collapse_reply_chain": "Tutup kutip",
             "copy_link_thread": "Salin tautan ke utasan",
             "expand_reply_chain": "Buka kutip",

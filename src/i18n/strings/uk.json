@@ -3552,6 +3552,7 @@
             "removed": "%(senderName)s вилучає віджет %(widgetName)s"
         },
         "mab": {
+            "remove_thread": "Вилучити тему",
             "collapse_reply_chain": "Згорнути цитати",
             "copy_link_thread": "Копіювати посилання на гілку",
             "expand_reply_chain": "Розгорнути цитати",
