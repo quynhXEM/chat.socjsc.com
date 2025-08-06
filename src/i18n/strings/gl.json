@@ -2643,7 +2643,8 @@
             "copy_link_thread": "Copiar ligazón da conversa",
             "expand_reply_chain": "Despregar as citas",
             "label": "Accións da mensaxe",
-            "view_in_room": "Ver na sala"
+            "view_in_room": "Ver na sala",
+            "action_no_disable": "¿Estás seguro de querer eliminar este hilo? Esta acción no se puede deshacer."
         },
         "mjolnir": {
             "changed_rule_glob": "%(senderName)s actualizou unha regra de bloqueo con %(oldGlob)s a %(newGlob)s por %(reason)s",
