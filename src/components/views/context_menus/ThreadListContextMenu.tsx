@@ -21,6 +21,9 @@ import { WidgetLayoutStore } from "../../../stores/widgets/WidgetLayoutStore";
 import { MatrixClientPeg } from "../../../MatrixClientPeg";
 import RightPanelStore from "../../../stores/right-panel/RightPanelStore";
 import { type ViewRoomPayload } from "../../../dispatcher/payloads/ViewRoomPayload";
+import Modal from "../../../Modal";
+import BaseDialog from "../dialogs/BaseDialog";
+import DialogButtons from "../elements/DialogButtons";
 
 export interface ThreadListContextMenuProps {
     mxEvent: MatrixEvent;
@@ -83,16 +86,38 @@ const ThreadListContextMenu: React.FC<ThreadListContextMenuProps> = ({
                 if (!room) return closeThreadOptions();
                 const thread = room.getThread(mxEvent.getId());
                 if (thread) {
-                    // Lấy tất cả event con (không bao gồm event gốc)
-                    const childEvents = thread.events.filter(ev => ev.getId() && ev.getId() !== mxEvent.getId());
-                    const cli = MatrixClientPeg.safeGet();
-                    const roomId = room.roomId;
-                    if (!roomId) return closeThreadOptions();
-                    // Xóa tất cả event con
-                    await Promise.all(childEvents.map(ev => cli.redactEvent(roomId, ev.getId()!)));
-
-                    // Đóng panel threads
-                    RightPanelStore.instance.hide(roomId);
+                    // Modal xác nhận
+                    Modal.createDialog(BaseDialog, {
+                        title: `${_t("timeline|mab|remove_thread")} ${_t("timeline|mab|remove_thread")}`,
+                        className: "mx_ConfirmDeleteThreadDialog",
+                        contentId: "mx_ConfirmDeleteThreadDialog_content",
+                        children: (
+                            <div>
+                                <p>{_t("timeline|mab|action_no_disable")}</p>
+                                <DialogButtons
+                                primaryButton={_t("timeline|mab|remove_thread")}
+                                primaryButtonClass="danger"
+                                onPrimaryButtonClick={async () => {
+                                    // Lấy tất cả event con (không bao gồm event gốc)
+                                    const childEvents = thread.events.filter(ev => ev.getId() && ev.getId() !== mxEvent.getId());
+                                    const cli = MatrixClientPeg.safeGet();
+                                    const roomId = room.roomId;
+                                    if (!roomId) return closeThreadOptions();
+                                    // Xóa tất cả event con
+                                    await Promise.all(childEvents.map(ev => cli.redactEvent(roomId, ev.getId()!)));
+                                    // Xóa luôn event gốc (event tạo thread)
+                                    await cli.redactEvent(roomId, mxEvent.getId());
+                                    // Đóng panel threads
+                                    RightPanelStore.instance.hide(roomId);
+                                    Modal.closeCurrentModal()
+                                }}
+                                cancelButton={_t("action|cancel")}
+                                onCancel={() => Modal.closeCurrentModal()}
+                            />
+                            </div>
+                        ),
+                        hasCancel: true,
+                    });
                 } else {
                     closeThreadOptions();
                 }
@@ -144,6 +169,7 @@ const ThreadListContextMenu: React.FC<ThreadListContextMenuProps> = ({
                             />
                         )}
                         <IconizedContextMenuOption
+                            className="mx_IconizedContextMenu_itemDestructive"
                             data-testid="remove-thread"
                             onClick={(e) => removeThread(e)}
                             label={_t("timeline|mab|remove_thread")}
