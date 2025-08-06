@@ -19,6 +19,7 @@ import { _t } from "../../../languageHandler";
 import IconizedContextMenu, { IconizedContextMenuOption, IconizedContextMenuOptionList } from "./IconizedContextMenu";
 import { WidgetLayoutStore } from "../../../stores/widgets/WidgetLayoutStore";
 import { MatrixClientPeg } from "../../../MatrixClientPeg";
+import RightPanelStore from "../../../stores/right-panel/RightPanelStore";
 import { type ViewRoomPayload } from "../../../dispatcher/payloads/ViewRoomPayload";
 
 export interface ThreadListContextMenuProps {
@@ -72,6 +73,35 @@ const ThreadListContextMenu: React.FC<ThreadListContextMenuProps> = ({
         [mxEvent, closeThreadOptions, permalinkCreator],
     );
 
+    // Remove Threads
+    const removeThread = useCallback(
+        async (evt: ButtonEvent | undefined): Promise<void> => {
+            if (permalinkCreator) {
+                evt?.preventDefault();
+                evt?.stopPropagation();
+                const room = MatrixClientPeg.safeGet().getRoom(mxEvent.getRoomId());
+                if (!room) return closeThreadOptions();
+                const thread = room.getThread(mxEvent.getId());
+                if (thread) {
+                    // Lấy tất cả event con (không bao gồm event gốc)
+                    const childEvents = thread.events.filter(ev => ev.getId() && ev.getId() !== mxEvent.getId());
+                    const cli = MatrixClientPeg.safeGet();
+                    const roomId = room.roomId;
+                    if (!roomId) return closeThreadOptions();
+                    // Xóa tất cả event con
+                    await Promise.all(childEvents.map(ev => cli.redactEvent(roomId, ev.getId()!)));
+
+                    // Đóng panel threads
+                    RightPanelStore.instance.hide(roomId);
+                } else {
+                    closeThreadOptions();
+                }
+            }
+        },
+        [mxEvent, closeThreadOptions, permalinkCreator],
+    );
+
+
     useEffect(() => {
         onMenuToggle?.(menuDisplayed);
     }, [menuDisplayed, onMenuToggle]);
@@ -115,7 +145,7 @@ const ThreadListContextMenu: React.FC<ThreadListContextMenuProps> = ({
                         )}
                         <IconizedContextMenuOption
                             data-testid="remove-thread"
-                            onClick={(e) => console.log("Xóa Threads")}
+                            onClick={(e) => removeThread(e)}
                             label={_t("timeline|mab|remove_thread")}
                             iconClassName="mx_ThreadPanel_removeThread"
                         />

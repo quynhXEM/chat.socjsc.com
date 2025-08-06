@@ -72,6 +72,7 @@ export function createRedactEventDialog({
                 ...(reason ? { reason } : {}),
                 ...withRelTypes,
             });
+            
         } catch (e: any) {
             const code = e.errcode || e.statusCode;
             // only show the dialog if failing for something other than a network error
