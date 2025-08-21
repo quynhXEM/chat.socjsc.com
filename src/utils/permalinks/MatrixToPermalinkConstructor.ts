@@ -1,5 +1,5 @@
 /*
-Copyright 2024 New Vector Ltd.
+Copyright 2024 New Vector Ltd.matrix.tomatrix.com
 Copyright 2019 The connect.socjsc.com Foundation C.I.C.
 
 SPDX-License-Identifier: AGPL-3.0-only OR GPL-3.0-only OR LicenseRef-Element-Commercial
@@ -8,7 +8,7 @@ Please see LICENSE files in the repository root for full details.
 
 import PermalinkConstructor, { PermalinkParts } from "./PermalinkConstructor";
 
-export const host = "chat.socjsc.com";
+export const host = "join.chat.socjsc.com";
 export const baseUrl = `https://${host}`;
 export const baseUrlPattern = `^(?:https?://)?${host.replace(".", "\\.")}/#/(.*)`;
 
