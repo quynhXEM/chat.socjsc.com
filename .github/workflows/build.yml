@@ -42,7 +42,7 @@ jobs:
 
       - name: Tạo tarball phát hành (dist)
         run: |
-          chmod +x scripts/ci_package.sh scripts/package.sh
+          chmod +x scripts/*.sh
           scripts/ci_package.sh
 
       - name: Upload artifact webapp.zip
