@@ -1,84 +1,92 @@
-name: Build
+name: Build and Release (Linux)
+
 on:
-    pull_request: {}
-    push:
-        branches: [develop, master]
-    merge_group:
-        types: [checks_requested]
-concurrency:
-    group: ${{ github.workflow }}-${{ github.head_ref || github.sha }}
-    cancel-in-progress: ${{ github.event_name == 'pull_request' }}
-# develop pushes and repository_dispatch handled in build_develop.yaml
-env:
-    # These must be set for fetchdep.sh to get the right branch
-    REPOSITORY: ${{ github.repository }}
-    PR_NUMBER: ${{ github.event.pull_request.number }}
-permissions: {} # No permissions required
+  push:
+    tags:
+      - 'v*'
+      - '*.*.*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag để tạo release (ví dụ: v1.2.3). Bỏ trống để chỉ build.'
+        required: false
+
+permissions:
+  contents: write
+
 jobs:
-    build:
-        name: "Build on ${{ matrix.image }}"
-        # We build on all 3 platforms to ensure we don't have any OS-specific build incompatibilities
-        strategy:
-            fail-fast: false
-            matrix:
-                image:
-                    - ubuntu-24.04
-                    - windows-2022
-                    - macos-14
-                isDevelop:
-                    - ${{ github.event_name == 'push' && github.ref_name == 'develop' }}
-                isPullRequest:
-                    - ${{ github.event_name == 'pull_request' }}
-                # Skip the ubuntu-24.04 build for the develop branch as the dedicated CD build_develop workflow handles that
-                # Skip the non-linux builds for pull requests as Windows is awfully slow, so run in merge queue only
-                exclude:
-                    - isDevelop: true
-                      image: ubuntu-24.04
-                    - isPullRequest: true
-                      image: windows-2022
-                    - isPullRequest: true
-                      image: macos-14
-        runs-on: ${{ matrix.image }}
-        defaults:
-            run:
-                shell: bash
-        steps:
-            - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+  build:
+    name: Build webapp và gói phát hành
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-            - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
-              with:
-                  # Disable cache on Windows as it is slower than not caching
-                  # https://github.com/actions/setup-node/issues/975
-                  cache: ${{ runner.os != 'Windows' && 'yarn' || '' }}
-                  node-version: "lts/*"
+      - name: Thiết lập Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'yarn'
 
-            # Workaround for yarn install timeouts, especially on Windows
-            - run: yarn config set network-timeout 300000
+      - name: Cài đặt dependencies
+        run: yarn install --frozen-lockfile
 
-            - name: Fetch layered build
-              id: layered_build
-              env:
-                  # tell layered.sh to check out the right sha of the JS-SDK & EW, if they were given one
-                  JS_SDK_GITHUB_BASE_REF: ${{ inputs.matrix-js-sdk-sha }}
-              run: |
-                  scripts/layered.sh
-                  JSSDK_SHA=$(git -C matrix-js-sdk rev-parse --short=12 HEAD)
-                  VECTOR_SHA=$(git rev-parse --short=12 HEAD)
-                  echo "VERSION=$VECTOR_SHA--js-$JSSDK_SHA" >> $GITHUB_OUTPUT
+      - name: Build (webapp)
+        run: yarn build
 
-            - name: Copy config
-              run: cp element.io/develop/config.json config.json
+      - name: Đóng gói webapp.zip
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y zip
+          zip -r webapp.zip webapp
 
-            - name: Build
-              env:
-                  CI_PACKAGE: true
-                  VERSION: "${{ steps.layered_build.outputs.VERSION }}"
-              run: |
-                  yarn build
+      - name: Tạo tarball phát hành (dist)
+        run: |
+          chmod +x scripts/ci_package.sh scripts/package.sh
+          scripts/ci_package.sh
 
-            - name: Upload Artifact
-              uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
-              with:
-                  name: webapp-${{ matrix.image }}
-                  path: webapp
-                  retention-days: 1
+      - name: Upload artifact webapp.zip
+        uses: actions/upload-artifact@v4
+        with:
+          name: webapp-zip
+          path: webapp.zip
+
+      - name: Upload artifact dist tarball
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-tarball
+          path: dist/*.tar.gz
+
+  release:
+    name: Tạo/Update GitHub Release
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref_type == 'tag' || inputs.tag != ''
+    steps:
+      - name: Tải artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: ./artifacts
+
+      - name: Xác định tag và tên release
+        id: meta
+        run: |
+          if [ -n "${{ inputs.tag }}" ]; then
+            TAG="${{ inputs.tag }}"
+          else
+            TAG="${GITHUB_REF##*/}"
+          fi
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+
+      - name: Tạo/Update Release và upload assets
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.meta.outputs.tag }}
+          generate_release_notes: true
+          files: |
+            artifacts/webapp-zip/webapp.zip
+            artifacts/dist-tarball/*.tar.gz
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+
