@@ -1440,14 +1440,38 @@ export default class MatrixChat extends React.PureComponent<IProps, IState> {
      * Called when the session is logged out
      */
     private onLoggedOut(): void {
-        this.viewLogin({
-            ready: false,
-            collapseLhs: false,
+        //     this.viewLogin({
+        // ready: false,
+        // collapseLhs: false,
+
+        // Reset all relevant state to avoid crash after logout (especially on iOS)
+
+        this.setState({
+            view: Views.LOGIN,
+            page_type: undefined,
             currentRoomId: null,
+            currentUserId: null,
+            collapseLhs: false,
+            hideToSRUsers: false,
+            isMobileRegistration: false,
+            syncError: null,
+            serverConfig: undefined,
+            ready: false,
+            threepidInvite: undefined,
+            roomOobData: undefined,
+            pendingInitialSync: false,
+            justRegistered: false,
+            roomJustCreatedOpts: undefined,
+            forceTimeline: false,
         });
         this.subTitleStatus = "";
         this.setPageSubtitle();
         this.stores.onLoggedOut();
+        // Optionally, abort any ongoing session loading
+        if (this.loadSessionAbortController) {
+            this.loadSessionAbortController.abort();
+            this.loadSessionAbortController = new AbortController();
+        }
     }
 
     /**
