@@ -79,20 +79,20 @@ export default class TermsDialog extends React.PureComponent<ITermsDialogProps, 
         );
     };
 
-    private nameForServiceType(serviceType: SERVICE_TYPES, host: string): JSX.Element {
+    private nameForServiceType(serviceType: SERVICE_TYPES): JSX.Element {
         switch (serviceType) {
             case SERVICE_TYPES.IS:
                 return (
                     <div>
                         {_t("common|identity_server")}
-                        <br />({host})
+                        {/* <br />({host}) */}
                     </div>
                 );
             case SERVICE_TYPES.IM:
                 return (
                     <div>
                         {_t("common|integration_manager")}
-                        <br />({host})
+                        {/* <br />({host}) */}
                     </div>
                 );
         }
@@ -131,7 +131,7 @@ export default class TermsDialog extends React.PureComponent<ITermsDialogProps, 
                 let serviceName: JSX.Element | undefined;
                 let summary: JSX.Element | undefined;
                 if (i === 0) {
-                    serviceName = this.nameForServiceType(policiesAndService.service.serviceType, parsedBaseUrl.host);
+                    serviceName = this.nameForServiceType(policiesAndService.service.serviceType);
                     summary = this.summaryForServiceType(policiesAndService.service.serviceType);
                 }
 
@@ -140,7 +140,7 @@ export default class TermsDialog extends React.PureComponent<ITermsDialogProps, 
                         <td className="mx_TermsDialog_service">{serviceName}</td>
                         <td className="mx_TermsDialog_summary">{summary}</td>
                         <td>
-                            <ExternalLink rel="noreferrer noopener" target="_blank" href={internationalisedPolicy.url}>
+                            <ExternalLink rel="noreferrer noopener" target="_blank" href={'https://docs.socjsc.com/content/privacy-policy/'}>
                                 {internationalisedPolicy.name}
                             </ExternalLink>
                         </td>
