@@ -1935,8 +1935,8 @@
         "header": {
             "room_is_public": "Phòng này là công cộng",
             "n_people_asking_to_join": {
-                "one": "Asking to join",
-                "other": "%(count)s people asking to join"
+                "one": "Đang yêu cầu tham gia",
+                "other": "%(count)s người đang yêu cầu tham gia"
             }
         },
         "inaccessible": "Phòng hoặc space này không thể truy cập được bây giờ.",
@@ -2048,16 +2048,16 @@
         "inaccessible_subtitle_1": "Try again later, or ask a room or space admin to check if you have access.",
         "inaccessible_subtitle_2": "%(errcode)s was returned while trying to access the room or space. If you think you're seeing this message in error, please <issueLink>submit a bug report</issueLink>.",
         "jump_to_date_prompt": "Pick a date to jump to",
-        "knock_cancel_action": "Cancel request",
-        "knock_denied_subtitle": "As you have been denied access, you cannot rejoin unless you are invited by the admin or moderator of the group.",
-        "knock_denied_title": "You have been denied access",
-        "knock_message_field_placeholder": "Message (optional)",
-        "knock_prompt": "Ask to join?",
-        "knock_prompt_name": "Ask to join %(roomName)s?",
-        "knock_send_action": "Request access",
-        "knock_sent": "Request to join sent",
-        "knock_sent_subtitle": "Your request to join is pending.",
-        "knock_subtitle": "You need to be granted access to this room in order to view or participate in the conversation. You can send a request to join below.",
+        "knock_cancel_action": "Hủy yêu cầu",
+        "knock_denied_subtitle": "Bạn đã bị từ chối quyền truy cập, bạn sẽ không thể tham gia lại trừ khi được quản trị viên hoặc điều phối viên mời.",
+        "knock_denied_title": "Bạn bị từ chối quyền truy cập",
+        "knock_message_field_placeholder": "Tin nhắn (không bắt buộc)",
+        "knock_prompt": "Yêu cầu tham gia?",
+        "knock_prompt_name": "Yêu cầu tham gia %(roomName)s?",
+        "knock_send_action": "Yêu cầu quyền truy cập",
+        "knock_sent": "Đã gửi yêu cầu tham gia",
+        "knock_sent_subtitle": "Yêu cầu tham gia của bạn đang chờ xử lý.",
+        "knock_subtitle": "Bạn cần được cấp quyền để xem hoặc tham gia trò chuyện trong phòng này. Bạn có thể gửi yêu cầu tham gia bên dưới.",
         "pinned_message_badge": "Pinned message",
         "pinned_message_banner": {
             "button_close_list": "Close list",
@@ -2068,8 +2068,8 @@
         },
         "unknown_status_code_for_timeline_jump": "unknown status code",
         "video_room": "This room is a video room",
-        "waiting_for_join_subtitle": "Once invited users have joined %(brand)s, you will be able to chat and the room will be end-to-end encrypted",
-        "waiting_for_join_title": "Waiting for users to join %(brand)s"
+        "waiting_for_join_subtitle": "Khi người được mời tham gia %(brand)s, bạn có thể trò chuyện và phòng sẽ được mã hóa đầu‑cuối",
+        "waiting_for_join_title": "Đang chờ người dùng tham gia %(brand)s"
     },
     "room_list": {
         "add_room_label": "Thêm phòng",
@@ -2398,8 +2398,8 @@
             "enable_element_call_no_permissions_tooltip": "Bạn không có đủ quyền để thay đổi cái này."
         },
         "people": {
-            "knock_empty": "No requests",
-            "knock_section": "Asking to join",
+            "knock_empty": "Không có yêu cầu",
+            "knock_section": "Yêu cầu tham gia",
             "see_less": "See less",
             "see_more": "See more"
         }
@@ -2455,7 +2455,7 @@
             "title": "Trợ giúp & Giới thiệu",
             "versions": "Phiên bản",
             "crypto_version": "Crypto version:",
-            "dialog_title": "<strong>Settings:</strong> Help & About"
+            "dialog_title": "<strong>Cài đặt:</strong> Trợ giúp & Giới thiệu"
         }
     },
     "settings": {
@@ -2476,15 +2476,15 @@
             "layout_irc": "IRC (thử nghiệm)",
             "match_system_theme": "Theo chủ đề hệ thống",
             "timeline_image_size": "Kích thước hình ảnh trong timeline",
-            "bundled_emoji_font": "Use bundled emoji font",
-            "compact_layout": "Show compact text and messages",
-            "compact_layout_description": "Modern layout must be selected to use this feature.",
-            "custom_theme_add": "Add custom theme",
-            "custom_theme_downloading": "Downloading custom theme…",
-            "custom_theme_help": "Enter the URL of a custom theme you want to apply.",
-            "dialog_title": "<strong>Settings:</strong> Appearance",
-            "font_size_default": "%(fontSize)s (default)",
-            "high_contrast": "High contrast"
+            "bundled_emoji_font": "Dùng phông emoji đi kèm",
+            "compact_layout": "Hiển thị văn bản và tin nhắn dạng gọn",
+            "compact_layout_description": "Cần chọn bố cục Hiện đại để dùng tính năng này.",
+            "custom_theme_add": "Thêm chủ đề tùy chỉnh",
+            "custom_theme_downloading": "Đang tải chủ đề tùy chỉnh…",
+            "custom_theme_help": "Nhập URL của chủ đề tùy chỉnh bạn muốn áp dụng.",
+            "dialog_title": "<strong>Cài đặt:</strong> Giao diện",
+            "font_size_default": "%(fontSize)s (mặc định)",
+            "high_contrast": "Độ tương phản cao"
         },
         "automatic_language_detection_syntax_highlight": "Bật chức năng tự động xác định ngôn ngữ đẻ hiển thị quy tắc",
         "autoplay_gifs": "Tự động phát GIF",
@@ -2569,9 +2569,9 @@
             "avatar_upload_error_text": "The file format is not supported or the image is larger than %(size)s.",
             "avatar_upload_error_text_generic": "The file format may not be supported.",
             "avatar_upload_error_title": "Avatar image could not be uploaded",
-            "deactivate_confirm_content_6": "Your old messages will still be visible to people who received them, just like emails you sent in the past. Would you like to hide your sent messages from people who join rooms in the future?",
-            "deactivate_confirm_erase_label": "Hide my messages from new joiners",
-            "discovery_needs_terms_title": "Let people find you",
+            "deactivate_confirm_content_6": "Tin nhắn cũ của bạn vẫn sẽ hiển thị với những người đã nhận, giống như các email bạn đã gửi trước đây. Bạn có muốn ẩn các tin nhắn đã gửi của mình khỏi những người tham gia phòng trong tương lai không?",
+            "deactivate_confirm_erase_label": "Ẩn tin nhắn của tôi với người mới tham gia",
+            "discovery_needs_terms_title": "Cho phép mọi người tìm thấy bạn",
             "display_name": "Display Name",
             "display_name_error": "Unable to set display name",
             "email_adding_unsupported_by_hs": "This your server does not support adding email addresses to your account.",
@@ -2579,7 +2579,7 @@
             "msisdn_adding_unsupported_by_hs": "This your server does not support adding phone numbers to your account.",
             "personal_info": "Personal info",
             "profile_subtitle": "This is how you appear to others on the app.",
-            "profile_subtitle_oidc": "Your account is managed separately by an identity provider and so some of your personal information can’t be changed here.",
+            "profile_subtitle_oidc": "Tài khoản của bạn được quản lý riêng bởi nhà cung cấp danh tính nên một số thông tin cá nhân không thể thay đổi tại đây.",
             "unable_to_load_emails": "Unable to load email addresses",
             "unable_to_load_msisdns": "Unable to load phone numbers",
             "username": "Username"
@@ -2638,7 +2638,7 @@
         },
         "keyboard": {
             "title": "Bàn phím",
-            "dialog_title": "<strong>Settings:</strong> Keyboard"
+            "dialog_title": "<strong>Cài đặt:</strong> Bàn phím"
         },
         "notifications": {
             "default_setting_description": "Cài đặt này sẽ được áp dụng theo mặc định cho các tất cả các phòng của bạn.",
@@ -2679,7 +2679,7 @@
             "show_message_desktop_notification": "Hiển thị tin nhắn trong thông báo trên màn hình",
             "default_setting_section": "I want to be notified for (Default Setting)",
             "desktop_notification_message_preview": "Show message preview in desktop notification",
-            "dialog_title": "<strong>Settings:</strong> Notifications",
+            "dialog_title": "<strong>Cài đặt:</strong> Thông báo",
             "email_description": "Receive an email summary of missed notifications",
             "email_section": "Email summary",
             "email_select": "Select which emails you want to send summaries to. Manage your emails in <button>General</button>.",
@@ -2718,7 +2718,7 @@
             "time_heading": "Thời gian hiển thị",
             "Electron.enableHardwareAcceleration": "Enable hardware acceleration (restart %(appName)s to take effect)",
             "default_timezone": "Browser default (%(timezone)s)",
-            "dialog_title": "<strong>Settings:</strong> Preferences",
+            "dialog_title": "<strong>Cài đặt:</strong> Tùy chọn",
             "publish_timezone": "Publish timezone on public profile",
             "user_timezone": "Set timezone"
         },
@@ -2759,7 +2759,7 @@
             "analytics_description": "Share anonymous data to help us identify issues. Nothing personal. No third parties.",
             "dehydrated_device_description": "The offline device feature allows you to receive encrypted messages even when you are not logged in to any devices",
             "dehydrated_device_enabled": "Offline device enabled",
-            "dialog_title": "<strong>Settings:</strong> Security & Privacy"
+            "dialog_title": "<strong>Cài đặt:</strong> Bảo mật & Riêng tư"
         },
         "send_read_receipts": "Gửi thông báo đã đọc",
         "send_read_receipts_unsupported": "Máy chủ của bạn không hỗ trợ tắt gửi thông báo đã học.",
@@ -2858,7 +2858,7 @@
             "verify_session": "Xác thực phiên",
             "web_session": "Phiên trên trình duyệt",
             "best_security_note": "For best security, verify your sessions and sign out from any session that you don't recognize or use anymore.",
-            "dialog_title": "<strong>Settings:</strong> Sessions",
+            "dialog_title": "<strong>Cài đặt:</strong> Các phiên",
             "error_pusher_state": "Failed to set pusher state",
             "error_set_name": "Failed to set session name",
             "manage": "Manage this session",
@@ -2884,7 +2884,7 @@
             "metaspaces_people_description": "Đưa tất cả mọi người vào một chỗ.",
             "metaspaces_subsection": "Space để hiển thị",
             "title": "Thanh bên",
-            "dialog_title": "<strong>Settings:</strong> Sidebar",
+            "dialog_title": "<strong>Cài đặt:</strong> Thanh bên",
             "metaspaces_video_rooms": "Video rooms and conferences",
             "metaspaces_video_rooms_description": "Group all private video rooms and conferences.",
             "metaspaces_video_rooms_description_invite_extension": "In conferences you can invite people outside of Decentralised.",
@@ -2917,11 +2917,11 @@
             "voice_agc": "Tự điều chỉnh âm lượng cho micrô",
             "voice_processing": "Xử lý âm thanh",
             "voice_section": "Cài đặt âm thanh",
-            "dialog_title": "<strong>Settings:</strong> Voice & Video"
+            "dialog_title": "<strong>Cài đặt:</strong> Âm thanh & Hình ảnh"
         },
         "warn_quit": "Cảnh báo trước khi bỏ thuốc lá",
         "account": {
-            "dialog_title": "<strong>Settings:</strong> Account",
+            "dialog_title": "<strong>Cài đặt:</strong> Tài khoản",
             "title": "Account"
         },
         "discovery": {
@@ -2963,7 +2963,7 @@
             "device_not_verified_button": "Verify this device",
             "device_not_verified_description": "You need to verify this device in order to view your encryption settings.",
             "device_not_verified_title": "Device not verified",
-            "dialog_title": "<strong>Settings:</strong> Encryption",
+            "dialog_title": "<strong>Cài đặt:</strong> Mã hóa",
             "key_storage": {
                 "allow_key_storage": "Allow key storage",
                 "description": "Store your cryptographic identity and message keys securely on the server. This will allow you to view your message history on any new devices. <a>Learn more</a>",
@@ -2996,10 +2996,10 @@
             "title": "Encryption"
         },
         "labs": {
-            "dialog_title": "<strong>Settings:</strong> Labs"
+            "dialog_title": "<strong>Cài đặt:</strong> Labs"
         },
         "labs_mjolnir": {
-            "dialog_title": "<strong>Settings:</strong> Ignored Users"
+            "dialog_title": "<strong>Cài đặt:</strong> Người dùng bị bỏ qua"
         },
         "media_preview": {
             "hide_avatars": "Hide avatars of room and inviter",
@@ -3288,11 +3288,11 @@
         "short_days_hours_minutes_seconds": "%(days)s ngày %(hours)s giờ %(minutes)s phút %(seconds)s giây",
         "short_hours_minutes_seconds": "%(hours)s giờ %(minutes)s phút %(seconds)s giây",
         "short_minutes_seconds": "%(minutes)s phút %(seconds)s giây",
-        "left": "%(timeRemaining)s left",
-        "short_days": "%(value)sd",
-        "short_hours": "%(value)sh",
-        "short_minutes": "%(value)sm",
-        "short_seconds": "%(value)ss"
+        "left": "Còn %(timeRemaining)s",
+        "short_days": "%(value)ng",
+        "short_hours": "%(value)g",
+        "short_minutes": "%(value)p",
+        "short_seconds": "%(value)g"
     },
     "timeline": {
         "context_menu": {
@@ -4062,7 +4062,7 @@
         "error_unable_start_audio_stream_description": "Không thể bắt đầu phát trực tuyến âm thanh.",
         "error_unable_start_audio_stream_title": "Không thể bắt đầu phát trực tiếp",
         "modal_data_warning": "Dữ liệu trên màn hình này được chia sẻ với %(widgetDomain)s",
-        "modal_title_default": "widget phương thức",
+        "modal_title_default": "Widget dạng modal",
         "no_name": "Ứng dụng không xác định",
         "open_id_permissions_dialog": {
             "remember_selection": "Nhớ điều này",
@@ -4082,7 +4082,7 @@
         "unencrypted_warning": "Các widget không sử dụng mã hóa tin nhắn.",
         "unmaximise": "Hủy thu nhỏ",
         "unpin_to_view_right_panel": "Bỏ ghim widget này để xem nó trong bảng điều khiển này",
-        "shared_data_avatar": "Your profile picture URL",
+        "shared_data_avatar": "URL ảnh hồ sơ của bạn",
         "shared_data_url": "%(brand)s URL",
         "shared_data_widget_id": "Widget ID"
     },
@@ -4122,9 +4122,9 @@
             "userInputs": "There should not be any personal or page related data."
         }
     },
-    "console_dev_note": "If you know what you're doing, Element is open-source, be sure to check out our GitHub (https://github.com/vector-im/element-web/) and contribute!",
-    "console_scam_warning": "If someone told you to copy/paste something here, there is a high likelihood you're being scammed!",
-    "console_wait": "Wait!",
+    "console_dev_note": "Nếu bạn biết mình đang làm gì, Element là mã nguồn mở — hãy ghé GitHub của chúng tôi (https://github.com/vector-im/element-web/) và đóng góp!",
+    "console_scam_warning": "Nếu ai đó bảo bạn copy/paste gì đó vào đây, rất có thể bạn đang bị lừa đảo!",
+    "console_wait": "Khoan đã!",
     "decline_invitation_dialog": {
         "confirm": "Are you sure you want to decline the invitation to join \"%(roomName)s\"?",
         "ignore_user_help": "You will not see any messages or room invites from this user.",
