@@ -1,7 +1,16 @@
 {
+  "version": 2,
   "headers": [
     {
       "source": "/.well-known/apple-app-site-association",
+      "headers": [
+        { "key": "Content-Type", "value": "application/json" },
+        { "key": "Content-Disposition", "value": "inline" },
+        { "key": "Cache-Control", "value": "no-cache" }
+      ]
+    },
+    {
+      "source": "/apple-app-site-association",
       "headers": [
         { "key": "Content-Type", "value": "application/json" },
         { "key": "Content-Disposition", "value": "inline" },
