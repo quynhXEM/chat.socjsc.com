@@ -1,12 +1,11 @@
 {
   "version": 2,
-  "functions": {
-    "api/servers.ts": {
-      "runtime": "nodejs18.x"
-    }
-  },
+  "builds": [
+    { "src": "package.json", "use": "@vercel/static-build", "config": { "distDir": "webapp" } },
+    { "src": "api/servers.ts", "use": "@vercel/node" }
+  ],
   "rewrites": [
-    { "source": "/((?!api).*)", "destination": "/webapp/index.html" }
+    { "source": "/((?!api).*)", "destination": "/index.html" }
   ],
   "headers": [
     {
