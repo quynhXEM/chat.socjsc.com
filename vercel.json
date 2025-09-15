@@ -5,7 +5,7 @@
     { "src": "webapp/**", "use": "@vercel/static" }
   ],
   "rewrites": [
-    { "source": "/(.*)", "destination": "/webapp/$1" }
+    { "source": "/((?!api).*)", "destination": "/webapp/index.html" }
   ],
   "headers": [
     {
