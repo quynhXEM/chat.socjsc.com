@@ -52,8 +52,8 @@ const onHelpClick = (): void => {
 
 const ServerPicker: React.FC<IProps> = ({ title, dialogTitle, serverConfig, onServerConfigChange, disabled }) => {
     const disableCustomUrls = SdkConfig.get("disable_custom_urls");
-    const appId = SdkConfig.get("app_soc_id");
-    const token = SdkConfig.get("app_soc_token");
+    const appId = process.env.REACT_APP_ID;
+    const token = process.env.REACT_APP_TOKEN;
     const [servers, setServer] = useState<any>([]);
 
     useEffect(() => {
