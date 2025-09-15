@@ -62,9 +62,14 @@ export default class ServerPickerDialog extends React.PureComponent<IProps, ISta
     }
 
     private onChangeServer = (e: any): void => {
-        // this.props.serverConfig.hsName = e.target.value;
-        // this.props.serverConfig.hsUrl = `https://${e.target.value}`;
-        this.setState({ serverChosen: e.target.value, defaultChosen: true, otherHomeserver: ""});
+        const selectedServerName = e.target.value;
+        if (selectedServerName) {
+            this.setState({ 
+                serverChosen: selectedServerName, 
+                defaultChosen: true, 
+                otherHomeserver: ""
+            });
+        }
     };
 
     private onOtherChosen = (): void => {

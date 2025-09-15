@@ -57,12 +57,8 @@ const ServerPicker: React.FC<IProps> = ({ title, dialogTitle, serverConfig, onSe
     useEffect(() => {
         const onGetServers = async (): Promise<void> => {
             try {
-                const token = process.env.APP_TOKEN || "";
-                const appId = process.env.APP_ID || "";
-
-                console.log("token, appId",token, appId);
-                
-
+                const token = process.env.REACT_APP_TOKEN || "";
+                const appId = process.env.REACT_APP_ID || "";
                 const res = await fetch(
                     `https://soc.socjsc.com/items/connect_server?filter[app_id]=${appId}&filter[status]=published&limit=100&fields=domain,is_default&meta=filter_count`,
                     {
