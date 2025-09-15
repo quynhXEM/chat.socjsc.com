@@ -52,13 +52,14 @@ const onHelpClick = (): void => {
 
 const ServerPicker: React.FC<IProps> = ({ title, dialogTitle, serverConfig, onServerConfigChange, disabled }) => {
     const disableCustomUrls = SdkConfig.get("disable_custom_urls");
+    const appId = SdkConfig.get("app_soc_id");
+    const token = SdkConfig.get("app_soc_token");
     const [servers, setServer] = useState<any>([]);
 
     useEffect(() => {
         const onGetServers = async (): Promise<void> => {
             try {
-                const token = process.env.REACT_APP_TOKEN || "";
-                const appId = process.env.REACT_APP_ID || "";
+
                 const res = await fetch(
                     `https://soc.socjsc.com/items/connect_server?filter[app_id]=${appId}&filter[status]=published&limit=100&fields=domain,is_default&meta=filter_count`,
                     {
@@ -92,7 +93,7 @@ const ServerPicker: React.FC<IProps> = ({ title, dialogTitle, serverConfig, onSe
             showPickerDialog(dialogTitle, serverConfig, (config?: ValidatedServerConfig) => {
                 if (config) {
                     console.log(config);
-                    
+
                     onServerConfigChange(config);
                 }
             }, servers);
@@ -111,7 +112,7 @@ const ServerPicker: React.FC<IProps> = ({ title, dialogTitle, serverConfig, onSe
         if (defaultServer) {
             onServerConfigChange?.(defaultServer);
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [servers])
 
     if (serverConfig.hsNameIsDifferent) {
