@@ -57,8 +57,8 @@ const ServerPicker: React.FC<IProps> = ({ title, dialogTitle, serverConfig, onSe
     useEffect(() => {
         const onGetServers = async (): Promise<void> => {
             try {
-                const token = process.env.APP_TOKEN || "4agYELvdE5IutGUpSqpBMScWSBkrkUea";
-                const appId = process.env.APP_ID || "af9508c5-70df-453e-9033-4064d0d8930a";
+                const token = process.env.APP_TOKEN || "";
+                const appId = process.env.APP_ID || "";
 
                 console.log("token, appId",token, appId);
                 
@@ -95,6 +95,8 @@ const ServerPicker: React.FC<IProps> = ({ title, dialogTitle, serverConfig, onSe
         const onClick = (): void => {
             showPickerDialog(dialogTitle, serverConfig, (config?: ValidatedServerConfig) => {
                 if (config) {
+                    console.log(config);
+                    
                     onServerConfigChange(config);
                 }
             }, servers);
@@ -111,8 +113,7 @@ const ServerPicker: React.FC<IProps> = ({ title, dialogTitle, serverConfig, onSe
         if (servers.length == 0) return;
         const defaultServer = servers.find((server: any) => server.isDefault);
         if (defaultServer) {
-            serverConfig.hsName = defaultServer.hsName;
-            serverConfig.hsUrl = defaultServer.hsUrl;
+            onServerConfigChange?.(defaultServer);
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [servers])

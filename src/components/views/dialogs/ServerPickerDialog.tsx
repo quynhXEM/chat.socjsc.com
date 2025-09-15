@@ -62,9 +62,9 @@ export default class ServerPickerDialog extends React.PureComponent<IProps, ISta
     }
 
     private onChangeServer = (e: any): void => {
-        this.props.serverConfig.hsName = e.target.value;
-        this.props.serverConfig.hsUrl = `https://${e.target.value}`;
-        this.setState({ serverChosen: e.target.value, defaultChosen: true });
+        // this.props.serverConfig.hsName = e.target.value;
+        // this.props.serverConfig.hsUrl = `https://${e.target.value}`;
+        this.setState({ serverChosen: e.target.value, defaultChosen: true, otherHomeserver: ""});
     };
 
     private onOtherChosen = (): void => {
@@ -152,7 +152,7 @@ export default class ServerPickerDialog extends React.PureComponent<IProps, ISta
     private onSubmit = async (ev: SyntheticEvent): Promise<void> => {
         ev.preventDefault();
 
-        if (this.state.defaultChosen) {
+        if (this.state.serverChosen) {
             const serverChose = this.props.servers.find((server) => server.hsName === this.state.serverChosen);
             this.props.onFinished({...serverChose, isDefault: true, hsNameIsDifferent: true});
             return;
@@ -198,17 +198,17 @@ export default class ServerPickerDialog extends React.PureComponent<IProps, ISta
                         {_t("auth|server_picker_intro")} {text}
                     </p>
 
-                    {this.props.servers?.map((server) => (
-                        <StyledRadioButton
-                            key={server.hsUrl}
-                            value={server.hsName}
-                            checked={this.state.serverChosen === server.hsName}
-                            onChange={this.onChangeServer}
-                            className="mt-1"
-                        >
+                    <Field
+                        element="select"
+                        value={this.state.serverChosen}
+                        onChange={this.onChangeServer}
+                    >
+                        {this.props.servers?.map((server) => (
+                        <option key={server.hsUrl}  value={server.hsName}>
                             {server.hsName}
-                        </StyledRadioButton>
-                    ))}
+                        </option>
+                        ))}
+                    </Field>
 
                     <StyledRadioButton
                         name="defaultChosen"
