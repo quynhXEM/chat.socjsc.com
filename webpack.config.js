@@ -2,6 +2,7 @@
 /* eslint-disable quote-props */
 
 const dotenv = require("dotenv");
+const Dotenv = require('dotenv-webpack');
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -20,6 +21,7 @@ const { RetryChunkLoadPlugin } = require("webpack-retry-chunk-load-plugin");
 
 dotenv.config();
 let ogImageUrl = process.env.RIOT_OG_IMAGE_URL;
+
 if (!ogImageUrl) ogImageUrl = "https://cdn-img.upanhlaylink.com/view/image_20250610fa2001f7c440bd6818477bbe010642a6.jpg";
 
 const cssThemes = {
@@ -177,14 +179,14 @@ module.exports = (env, argv) => {
             minimize: enableMinification,
             minimizer: enableMinification
                 ? [
-                      new TerserPlugin({
-                          // Already minified and includes an auto-generated license comment
-                          // that the plugin would otherwise pointlessly extract into a separate
-                          // file. We add the actual license using CopyWebpackPlugin below.
-                          exclude: "jitsi_external_api.min.js",
-                      }),
-                      new CssMinimizerPlugin(),
-                  ]
+                    new TerserPlugin({
+                        // Already minified and includes an auto-generated license comment
+                        // that the plugin would otherwise pointlessly extract into a separate
+                        // file. We add the actual license using CopyWebpackPlugin below.
+                        exclude: "jitsi_external_api.min.js",
+                    }),
+                    new CssMinimizerPlugin(),
+                ]
                 : [],
 
             // Set the value of `process.env.NODE_ENV` for libraries like React
@@ -579,7 +581,7 @@ module.exports = (env, argv) => {
 
         plugins: [
             ...moduleReplacementPlugins,
-
+            new Dotenv(),
             // This exports our CSS using the splitChunks and loaders above.
             new MiniCssExtractPlugin({
                 filename: "bundles/[fullhash]/[name].css",
@@ -649,16 +651,16 @@ module.exports = (env, argv) => {
             // This plugin throws an error on import on some platforms like ppc64le & s390x even if the plugin isn't called,
             // so we require it conditionally.
             process.env.SENTRY_DSN &&
-                require("@sentry/webpack-plugin").sentryWebpackPlugin({
-                    release: process.env.VERSION,
-                    sourcemaps: {
-                        paths: "./webapp/bundles/**",
-                    },
-                    errorHandler: (err) => {
-                        console.warn("Sentry CLI Plugin: " + err.message);
-                        console.log(`::warning title=Sentry error::${err.message}`);
-                    },
-                }),
+            require("@sentry/webpack-plugin").sentryWebpackPlugin({
+                release: process.env.VERSION,
+                sourcemaps: {
+                    paths: "./webapp/bundles/**",
+                },
+                errorHandler: (err) => {
+                    console.warn("Sentry CLI Plugin: " + err.message);
+                    console.log(`::warning title=Sentry error::${err.message}`);
+                },
+            }),
 
             new CopyWebpackPlugin({
                 patterns: [
