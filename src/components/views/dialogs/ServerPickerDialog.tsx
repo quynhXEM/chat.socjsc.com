@@ -17,32 +17,32 @@ import AccessibleButton from "../elements/AccessibleButton";
 import SdkConfig from "../../../SdkConfig";
 import Field from "../elements/Field";
 import StyledRadioButton from "../elements/StyledRadioButton";
-import TextWithTooltip from "../elements/TextWithTooltip";
 import withValidation, { type IFieldState, type IValidationResult } from "../elements/Validation";
 import { type ValidatedServerConfig } from "../../../utils/ValidatedServerConfig";
-import ExternalLink from "../elements/ExternalLink";
 
 interface IProps {
     title?: string;
     serverConfig: ValidatedServerConfig;
     onFinished(config?: ValidatedServerConfig): void;
+    servers: any[];
 }
 
 interface IState {
     defaultChosen: boolean;
+    serverChosen: string;
     otherHomeserver: string;
 }
 
 export default class ServerPickerDialog extends React.PureComponent<IProps, IState> {
-    private readonly defaultServer: ValidatedServerConfig;
+    // private readonly defaultServer: ValidatedServerConfig;
     private readonly fieldRef = createRef<Field>();
     private validatedConf?: ValidatedServerConfig;
 
     public constructor(props: IProps) {
         super(props);
 
-        const config = SdkConfig.get();
-        this.defaultServer = config["validated_server_config"]!;
+        // const config = SdkConfig.get();
+        // this.defaultServer = config["validated_server_config"]!;
         const { serverConfig } = this.props;
 
         let otherHomeserver = "";
@@ -56,16 +56,19 @@ export default class ServerPickerDialog extends React.PureComponent<IProps, ISta
 
         this.state = {
             defaultChosen: serverConfig.isDefault,
+            serverChosen: serverConfig.hsName,
             otherHomeserver,
         };
     }
 
-    private onDefaultChosen = (): void => {
-        this.setState({ defaultChosen: true });
+    private onChangeServer = (e: any): void => {
+        this.props.serverConfig.hsName = e.target.value;
+        this.props.serverConfig.hsUrl = `https://${e.target.value}`;
+        this.setState({ serverChosen: e.target.value, defaultChosen: true });
     };
 
     private onOtherChosen = (): void => {
-        this.setState({ defaultChosen: false });
+        this.setState({ defaultChosen: false, serverChosen: "" });
     };
 
     private onHomeserverChange = (ev: ChangeEvent<HTMLInputElement>): void => {
@@ -150,7 +153,8 @@ export default class ServerPickerDialog extends React.PureComponent<IProps, ISta
         ev.preventDefault();
 
         if (this.state.defaultChosen) {
-            this.props.onFinished(this.defaultServer);
+            const serverChose = this.props.servers.find((server) => server.hsName === this.state.serverChosen);
+            this.props.onFinished({...serverChose, isDefault: true, hsNameIsDifferent: true});
             return;
         }
 
@@ -167,18 +171,18 @@ export default class ServerPickerDialog extends React.PureComponent<IProps, ISta
 
     public render(): React.ReactNode {
         let text: string | undefined;
-        if (this.defaultServer.hsName === "connect.socjsc.com") {
-            text = _t("auth|server_picker_description_connect.socjsc.com");
-        }
+        // if (this.defaultServer.hsName === "connect.socjsc.com") {
+        //     text = _t("auth|server_picker_description_connect.socjsc.com");
+        // }
 
-        let defaultServerName: React.ReactNode = this.defaultServer.hsName;
-        if (this.defaultServer.hsNameIsDifferent) {
-            defaultServerName = (
-                <TextWithTooltip className="mx_Login_underlinedServerName" tooltip={this.defaultServer.hsUrl}>
-                    {this.defaultServer.hsName}
-                </TextWithTooltip>
-            );
-        }
+        // let defaultServerName: React.ReactNode = this.defaultServer.hsName;
+        // if (this.defaultServer.hsNameIsDifferent) {
+        //     defaultServerName = (
+        //         <TextWithTooltip className="mx_Login_underlinedServerName" tooltip={this.defaultServer.hsUrl}>
+        //             {this.defaultServer.hsName}
+        //         </TextWithTooltip>
+        //     );
+        // }
 
         return (
             <BaseDialog
@@ -194,15 +198,17 @@ export default class ServerPickerDialog extends React.PureComponent<IProps, ISta
                         {_t("auth|server_picker_intro")} {text}
                     </p>
 
-                    <StyledRadioButton
-                        name="defaultChosen"
-                        value="true"
-                        checked={this.state.defaultChosen}
-                        onChange={this.onDefaultChosen}
-                        data-testid="defaultHomeserver"
-                    >
-                        {defaultServerName}
-                    </StyledRadioButton>
+                    {this.props.servers?.map((server) => (
+                        <StyledRadioButton
+                            key={server.hsUrl}
+                            value={server.hsName}
+                            checked={this.state.serverChosen === server.hsName}
+                            onChange={this.onChangeServer}
+                            className="mt-1"
+                        >
+                            {server.hsName}
+                        </StyledRadioButton>
+                    ))}
 
                     <StyledRadioButton
                         name="defaultChosen"
