@@ -694,8 +694,6 @@ module.exports = (env, argv) => {
             // We bake the version in so the app knows its version immediately
             new webpack.DefinePlugin({ 
                 "process.env.VERSION": JSON.stringify(VERSION),
-                "process.env.REACT_APP_ID": JSON.stringify(process.env.REACT_APP_ID),
-                "process.env.REACT_APP_TOKEN": JSON.stringify(process.env.REACT_APP_TOKEN),
              }),
             // But we also write it to a file which gets polled for update detection
             new VersionFilePlugin({
@@ -763,6 +761,13 @@ module.exports = (env, argv) => {
 
             // Disable host check
             allowedHosts: "all",
+            proxy: [
+                {
+                    context: ["/api"],
+                    target: "http://localhost:4000",
+                    changeOrigin: true,
+                },
+            ],
         },
     };
 };

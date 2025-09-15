@@ -52,24 +52,19 @@ const onHelpClick = (): void => {
 
 const ServerPicker: React.FC<IProps> = ({ title, dialogTitle, serverConfig, onServerConfigChange, disabled }) => {
     const disableCustomUrls = SdkConfig.get("disable_custom_urls");
-    const appId = process.env.REACT_APP_ID;
-    const token = process.env.REACT_APP_TOKEN;
+    // Credentials are handled by backend proxy; no env on client
     const [servers, setServer] = useState<any>([]);
 
     useEffect(() => {
         const onGetServers = async (): Promise<void> => {
             try {
 
-                const res = await fetch(
-                    `https://soc.socjsc.com/items/connect_server?filter[app_id]=${appId}&filter[status]=published&limit=100&fields=domain,is_default&meta=filter_count`,
-                    {
-                        method: "GET",
-                        headers: {
-                            "Content-Type": "application/json",
-                            "Authorization": `Bearer ${token}`,
-                        },
+                const res = await fetch(`/api/servers?limit=100&fields=domain,is_default&meta=filter_count`, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
                     },
-                );
+                });
                 const data = await res.json();
                 const result = data?.data?.map((item: { domain: string, is_default: boolean }) => ({
                     "hsUrl": `https://${item.domain}`,
