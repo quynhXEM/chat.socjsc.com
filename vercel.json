@@ -17,15 +17,5 @@
         { "key": "Cache-Control", "value": "no-cache" }
       ]
     }
-  ],
-  "overrides": {
-    ".well-known/apple-app-site-association": {
-      "contentType": "application/json",
-      "cacheControl": "no-cache"
-    },
-    "apple-app-site-association": {
-      "contentType": "application/json",
-      "cacheControl": "no-cache"
-    }
-  }
+  ]
 }
