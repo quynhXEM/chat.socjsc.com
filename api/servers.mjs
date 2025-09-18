@@ -1,7 +1,7 @@
-import type { VercelRequest, VercelResponse } from "@vercel/node";
+/* eslint-disable matrix-org/require-copyright-header */
 const fetch = require("node-fetch");
 
-export default async function handler(req: VercelRequest, res: VercelResponse): Promise<void> {
+export default async function handler(req, res) {
     const APP_ID = process.env.REACT_APP_ID;
     const APP_TOKEN = process.env.REACT_APP_TOKEN;
 
@@ -11,7 +11,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
     }
 
     try {
-        const { limit = 100, fields = "domain,is_default", meta = "filter_count" } = req.query as Record<string, string>;
+        const { limit = 100, fields = "domain,is_default", meta = "filter_count" } = req.query;
 
         const url = `https://soc.socjsc.com/items/connect_server?filter[app_id]=${encodeURIComponent(
             APP_ID,
