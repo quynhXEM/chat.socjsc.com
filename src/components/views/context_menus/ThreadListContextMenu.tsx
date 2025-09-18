@@ -1,6 +1,6 @@
 /*
 Copyright 2024 New Vector Ltd.
-Copyright 2021 The connect.socjsc.com Foundation C.I.C.
+Copyright 2021 The Matrix.org Foundation C.I.C.
 
 SPDX-License-Identifier: AGPL-3.0-only OR GPL-3.0-only OR LicenseRef-Element-Commercial
 Please see LICENSE files in the repository root for full details.
@@ -19,12 +19,11 @@ import { _t } from "../../../languageHandler";
 import IconizedContextMenu, { IconizedContextMenuOption, IconizedContextMenuOptionList } from "./IconizedContextMenu";
 import { WidgetLayoutStore } from "../../../stores/widgets/WidgetLayoutStore";
 import { MatrixClientPeg } from "../../../MatrixClientPeg";
-import RightPanelStore from "../../../stores/right-panel/RightPanelStore";
 import { type ViewRoomPayload } from "../../../dispatcher/payloads/ViewRoomPayload";
+import QuestionDialog from "../../views/dialogs/QuestionDialog";
 import Modal from "../../../Modal";
 import BaseDialog from "../dialogs/BaseDialog";
 import DialogButtons from "../elements/DialogButtons";
-
 export interface ThreadListContextMenuProps {
     mxEvent: MatrixEvent;
     permalinkCreator?: RoomPermalinkCreator;
@@ -75,58 +74,94 @@ const ThreadListContextMenu: React.FC<ThreadListContextMenuProps> = ({
         },
         [mxEvent, closeThreadOptions, permalinkCreator],
     );
+    
+    const deleteThread = useCallback(
+        async (evt: ButtonEvent) => {
+            evt.preventDefault();
+            evt.stopPropagation();
 
-    // Remove Threads
-    const removeThread = useCallback(
-        async (evt: ButtonEvent | undefined): Promise<void> => {
-            if (permalinkCreator) {
-                evt?.preventDefault();
-                evt?.stopPropagation();
-                const room = MatrixClientPeg.safeGet().getRoom(mxEvent.getRoomId());
-                if (!room) return closeThreadOptions();
-                const thread = room.getThread(mxEvent.getId());
-                if (thread) {
-                    // Modal xác nhận
-                    Modal.createDialog(BaseDialog, {
-                        title: `${_t("timeline|mab|remove_thread")} ${_t("common|threads")}`,
-                        className: "mx_ConfirmDeleteThreadDialog",
-                        contentId: "mx_ConfirmDeleteThreadDialog_content",
-                        children: (
-                            <div>
-                                <p>{_t("timeline|mab|action_no_disable")}</p>
-                                <DialogButtons
-                                primaryButton={_t("timeline|mab|remove_thread")}
-                                primaryButtonClass="danger"
-                                onPrimaryButtonClick={async () => {
-                                    // Lấy tất cả event con (không bao gồm event gốc)
-                                    const childEvents = thread.events.filter(ev => ev.getId() && ev.getId() !== mxEvent.getId());
-                                    const cli = MatrixClientPeg.safeGet();
-                                    const roomId = room.roomId;
-                                    if (!roomId) return closeThreadOptions();
-                                    // Xóa tất cả event con
-                                    await Promise.all(childEvents.map(ev => cli.redactEvent(roomId, ev.getId()!)));
-                                    // Xóa luôn event gốc (event tạo thread)
-                                    await cli.redactEvent(roomId, mxEvent.getId());
-                                    // Đóng panel threads
-                                    RightPanelStore.instance.hide(roomId);
-                                    Modal.closeCurrentModal()
-                                }}
-                                cancelButton={_t("action|cancel")}
-                                onCancel={() => Modal.closeCurrentModal()}
-                            />
-                            </div>
-                        ),
-                        hasCancel: true,
-                    });
-                } else {
-                    closeThreadOptions();
-                }
+            const client = MatrixClientPeg.safeGet();
+            const room = client.getRoom(mxEvent.getRoomId());
+            if (!room) return;
+
+            // lấy thread dựa trên event gốc
+            const thread = room.getThread?.(mxEvent.getId());
+            // lấy tất cả event con (không bao gồm event gốc)
+            const childEvents = thread?.events.filter((e) => e.getId() !== mxEvent.getId()) ?? [];
+
+            try {
+                await Promise.all(
+                    childEvents.map(async (e) => {
+                        if (room.currentState.maySendRedactionForEvent(e, client.getUserId()!)) {
+                            await client.redactEvent(mxEvent.getRoomId(), e.getId()!, undefined, {
+                                reason: "Deleted by user",
+                            });
+                        } else {
+                            console.warn("No permission to redact", e.getId());
+                        }
+                    }),
+                );
+            } catch (err) {
+                console.error("Failed to delete child events of thread", err);
             }
+
+            closeThreadOptions();
         },
-        [mxEvent, closeThreadOptions, permalinkCreator],
+        [mxEvent, closeThreadOptions],
     );
 
+    const confirmDeleteThread = useCallback(
+        async (evt: ButtonEvent) => {
+            evt.preventDefault();
+            evt.stopPropagation();
+            // Modal.createDialog(BaseDialog, {
+            //     title: `${_t("timeline|mab|remove_thread")} ${_t("common|threads")}`, // "Xoá các tin trong thread?"
+            //     className: "mx_ConfirmDeleteThreadDialog",
+            //     contentId: "mx_ConfirmDeleteThreadDialog_content",
+            //     children: (
+            //         <div>
+            //             <p>{_t("timeline|mab|action_no_disable")}</p>
+            //             <DialogButtons
+            //                 primaryButton={_t("action|ok")} // "Xoá"
+            //                 primaryButtonClass="danger" // tạo nút đỏ
+            //                 cancelButton={_t("common|cancel")} // "Hủy bỏ"
+            //                 onPrimaryButtonClick={async () => {
+            //                     await deleteThread(evt);
+            //                 }}
+            //                 onCancel={closeThreadOptions}
+            //             />
+            //         </div>
+            //     ),
+            // });
 
+            // Modal.createDialog(QuestionDialog, {
+            //     title: _t("timeline|mab|remove_thread"), // "Xoá các tin trong thread?"
+            //     description: _t("timeline|mab|action_no_disable"),
+            //     button: _t("action|ok"), // "Xoá"
+            //     danger: true, // tạo nút đỏ
+            //     onFinished: async (confirm) => {
+            //         if (confirm) {
+            //             await deleteThread(evt);
+            //         } else {
+            //             closeThreadOptions();
+            //         }
+            //     },
+            // });
+
+            const { finished } = Modal.createDialog(QuestionDialog, {
+                title: _t("timeline|mab|remove_thread"), // "Xoá các tin trong thread?"
+                description: _t("timeline|mab|action_no_disable"),
+                button: _t("action|confirm"),
+            });
+            const [confirmed] = await finished;
+            if (confirmed) {
+                deleteThread(evt);
+            } else {
+                closeThreadOptions();
+            }
+        },
+        [deleteThread],
+    );
     useEffect(() => {
         onMenuToggle?.(menuDisplayed);
     }, [menuDisplayed, onMenuToggle]);
@@ -171,7 +206,7 @@ const ThreadListContextMenu: React.FC<ThreadListContextMenuProps> = ({
                         <IconizedContextMenuOption
                             className="mx_IconizedContextMenu_itemDestructive"
                             data-testid="remove-thread"
-                            onClick={(e) => removeThread(e)}
+                            onClick={(e) => confirmDeleteThread(e)}
                             label={_t("timeline|mab|remove_thread")}
                             iconClassName="mx_ThreadPanel_removeThread"
                         />
