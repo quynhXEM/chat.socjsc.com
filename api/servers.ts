@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import fetch from "node-fetch";
+const fetch = require("node-fetch");
 
 export default async function handler(req: VercelRequest, res: VercelResponse): Promise<void> {
     const APP_ID = process.env.REACT_APP_ID;
