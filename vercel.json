@@ -6,6 +6,7 @@
   ],
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" },
+    { "source": "/api/servers", "destination": "/api/servers.js" },
     { "source": "/((?!api|_next|.*\\..*).*)", "destination": "/webapp/index.html" }
   ],
   "headers": [
