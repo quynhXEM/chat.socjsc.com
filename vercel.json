@@ -4,9 +4,9 @@
     { "src": "package.json", "use": "@vercel/static-build", "config": { "distDir": "webapp" } },
     { "src": "api/servers.ts", "use": "@vercel/node" }
   ],
-  "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/$1" },
-    { "source": "/((?!api|_next|.*\\..*).*)", "destination": "/webapp/index.html" }
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/$1" },
+    { "src": "/(.*)", "dest": "/webapp/index.html" }
   ],
   "headers": [
     {
