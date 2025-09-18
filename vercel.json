@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     { "src": "package.json", "use": "@vercel/static-build", "config": { "distDir": "webapp" } },
-    { "src": "api/servers.ts", "use": "@vercel/node" }
+    { "src": "api/**/*.ts", "use": "@vercel/node", "config": { "tsconfig": "tsconfig.api.json" } }
   ],
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" },
