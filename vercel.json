@@ -1,11 +1,13 @@
 {
   "version": 2,
   "builds": [
-    { "src": "api/servers.ts", "use": "@vercel/node" },
-    { "src": "webapp/**", "use": "@vercel/static" }
+    { "src": "package.json", "use": "@vercel/static-build", "config": { "distDir": "webapp" } },
+     { "src": "api/servers.js", "use": "@vercel/node", "config": { "tsconfig": "tsconfig.api.json" } }
   ],
   "rewrites": [
-    { "source": "/(.*)", "destination": "/webapp/$1" }
+    { "source": "/api/(.*)", "destination": "/api/$1" },
+    { "source": "/api/servers", "destination": "/api/servers.js" },
+    { "source": "/((?!api|_next|.*\\..*).*)", "destination": "/webapp/index.html" }
   ],
   "headers": [
     {
