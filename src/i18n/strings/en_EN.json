@@ -606,7 +606,8 @@
         "video": "Video",
         "video_room": "Video room",
         "view_message": "View message",
-        "warning": "Warning"
+        "warning": "Warning",
+        "getting_server": "Getting server list..."
     },
     "composer": {
         "autocomplete": {

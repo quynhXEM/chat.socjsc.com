@@ -58,7 +58,6 @@ const ServerPicker: React.FC<IProps> = ({ title, dialogTitle, serverConfig, onSe
     useEffect(() => {
         const onGetServers = async (): Promise<void> => {
             try {
-
                 const res = await fetch(`/api/servers?limit=100&fields=domain,is_default&meta=filter_count`, {
                     method: "GET",
                     headers: {
@@ -80,15 +79,14 @@ const ServerPicker: React.FC<IProps> = ({ title, dialogTitle, serverConfig, onSe
             }
         };
         onGetServers()
+
     }, [])
 
     let editBtn;
-    if (!disableCustomUrls && onServerConfigChange && servers) {
+    if (!disableCustomUrls && onServerConfigChange && servers.length != 0) {
         const onClick = (): void => {
             showPickerDialog(dialogTitle, serverConfig, (config?: ValidatedServerConfig) => {
                 if (config) {
-                    console.log(config);
-
                     onServerConfigChange(config);
                 }
             }, servers);
@@ -107,7 +105,6 @@ const ServerPicker: React.FC<IProps> = ({ title, dialogTitle, serverConfig, onSe
         if (defaultServer) {
             onServerConfigChange?.(defaultServer);
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [servers])
 
     if (serverConfig.hsNameIsDifferent) {
@@ -123,7 +120,6 @@ const ServerPicker: React.FC<IProps> = ({ title, dialogTitle, serverConfig, onSe
     //     desc = <span className="mx_ServerPicker_desc">{_t("auth|server_picker_description_connect.socjsc.com")}</span>;
     // }
 
-    if (!servers) return;
     return (
         <div className="mx_ServerPicker">
             <h2>{title || _t("common|homeserver")}</h2>
@@ -135,9 +131,9 @@ const ServerPicker: React.FC<IProps> = ({ title, dialogTitle, serverConfig, onSe
                 />
             ) : null}
             <span className="mx_ServerPicker_server" title={typeof serverName === "string" ? serverName : undefined}>
-                {serverName}
+                {servers.length != 0 ? serverName : _t("common|getting_server")}
             </span>
-            {editBtn}
+            {servers.length != 0 && editBtn}
             {/* {desc} */}
         </div>
     );
