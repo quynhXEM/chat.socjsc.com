@@ -23,6 +23,7 @@ interface IProps {
     serverConfig: ValidatedServerConfig;
     disabled?: boolean;
     onServerConfigChange?(config: ValidatedServerConfig): void;
+    onLoading?(status: boolean): void;
 }
 
 const showPickerDialog = (
@@ -50,12 +51,13 @@ const onHelpClick = (): void => {
     );
 };
 
-const ServerPicker: React.FC<IProps> = ({ title, dialogTitle, serverConfig, onServerConfigChange, disabled }) => {
+const ServerPicker: React.FC<IProps> = ({ title, dialogTitle, serverConfig, onServerConfigChange, disabled, onLoading }) => {
     const disableCustomUrls = SdkConfig.get("disable_custom_urls");
     // Credentials are handled by backend proxy; no env on client
     const [servers, setServer] = useState<any>([]);
 
     useEffect(() => {
+        onLoading?.(true);
         const onGetServers = async (): Promise<void> => {
             try {
                 const res = await fetch(`/api/servers?limit=100&fields=domain,is_default&meta=filter_count`, {
@@ -74,8 +76,10 @@ const ServerPicker: React.FC<IProps> = ({ title, dialogTitle, serverConfig, onSe
                     "isNameResolvable": true
                 }))
                 setServer(result ?? [])
+                onLoading?.(false);
             } catch (e) {
                 console.error("Failed to load servers", e);
+                onLoading?.(false);
             }
         };
         onGetServers()

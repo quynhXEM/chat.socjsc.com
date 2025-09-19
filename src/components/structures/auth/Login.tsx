@@ -6,7 +6,7 @@ SPDX-License-Identifier: AGPL-3.0-only OR GPL-3.0-only OR LicenseRef-Element-Com
 Please see LICENSE files in the repository root for full details.
 */
 
-import React, { type JSX, type ReactNode } from "react";
+import React, { useState, type JSX, type ReactNode } from "react";
 import classNames from "classnames";
 import { logger } from "matrix-js-sdk/src/logger";
 import { type SSOFlow, SSOAction } from "matrix-js-sdk/src/matrix";
@@ -77,6 +77,7 @@ interface IState {
     serverIsAlive: boolean;
     serverErrorIsFatal: boolean;
     serverDeadError?: ReactNode;
+    loading: boolean;
 }
 
 type OnPasswordLogin = {
@@ -109,6 +110,7 @@ export default class LoginComponent extends React.PureComponent<IProps, IState> 
             serverIsAlive: true,
             serverErrorIsFatal: false,
             serverDeadError: "",
+            loading: true,
         };
 
         // map from login step type to a function which will render a control
@@ -534,7 +536,6 @@ export default class LoginComponent extends React.PureComponent<IProps, IState> 
                 <AuthBody>
                     <h1>
                         {_t("action|sign_in")}
-                        {loader}
                     </h1>
                     {errorTextSection}
                     {serverDeadSection}
@@ -542,8 +543,10 @@ export default class LoginComponent extends React.PureComponent<IProps, IState> 
                         serverConfig={this.props.serverConfig}
                         onServerConfigChange={this.props.onServerConfigChange}
                         disabled={this.isBusy()}
+                        onLoading={(status: boolean) => this.setState({loading: status})}
                     />
-                    {this.renderLoginComponentForFlows()}
+                    <div className="" style={{ display: this.isBusy() ? "flex" : "none", flexDirection: "column", alignItems: "center", justifyContent: "center", marginBottom: this.isBusy() ? '20px' : '0px'}}>{loader}</div>
+                    {!this.state.loading && !this.isBusy() && this.renderLoginComponentForFlows()}
                     {footer}
                 </AuthBody>
             </AuthPage>
