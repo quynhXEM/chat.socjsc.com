@@ -123,6 +123,7 @@ interface IState {
     // the OIDC native login flow, when supported and enabled
     // if present, must be used for registration
     oidcNativeFlow?: OidcNativeFlow;
+    loading: boolean;
 }
 
 export default class Registration extends React.Component<IProps, IState> {
@@ -145,6 +146,7 @@ export default class Registration extends React.Component<IProps, IState> {
             serverIsAlive: true,
             serverErrorIsFatal: false,
             serverDeadError: "",
+            loading: true,
         };
 
         const { hsUrl, isUrl, delegatedAuthentication } = this.props.serverConfig;
@@ -600,7 +602,7 @@ export default class Registration extends React.Component<IProps, IState> {
             return (
                 <React.Fragment>
                     {ssoSection}
-                    <RegistrationForm
+                    {!this.state.loading && <RegistrationForm
                         defaultUsername={this.state.formVals.username}
                         defaultEmail={this.state.formVals.email}
                         defaultPhoneCountry={this.state.formVals.phoneCountry}
@@ -612,7 +614,7 @@ export default class Registration extends React.Component<IProps, IState> {
                         canSubmit={!this.state.serverErrorIsFatal}
                         matrixClient={this.state.matrixClient}
                         mobileRegister={this.props.mobileRegister}
-                    />
+                    />}
                 </React.Fragment>
             );
         }
@@ -749,6 +751,7 @@ export default class Registration extends React.Component<IProps, IState> {
                                     onServerConfigChange={
                                         this.state.doingUIAuth ? undefined : this.props.onServerConfigChange
                                     }
+                                    onLoading={(status: boolean) => this.setState({loading: status})}
                                 />
                             }
                         >
