@@ -31,6 +31,7 @@ interface IState {
     defaultChosen: boolean;
     serverChosen: string;
     otherHomeserver: string;
+    checked: boolean;
 }
 
 export default class ServerPickerDialog extends React.PureComponent<IProps, IState> {
@@ -55,9 +56,10 @@ export default class ServerPickerDialog extends React.PureComponent<IProps, ISta
         }
 
         this.state = {
-            defaultChosen: serverConfig.isDefault,
+            defaultChosen: false,
             serverChosen: serverConfig.hsName,
             otherHomeserver,
+            checked: true,
         };
     }
 
@@ -67,13 +69,14 @@ export default class ServerPickerDialog extends React.PureComponent<IProps, ISta
             this.setState({ 
                 serverChosen: selectedServerName, 
                 defaultChosen: true, 
-                otherHomeserver: ""
+                otherHomeserver: "",
+                checked: false,
             });
         }
     };
 
     private onOtherChosen = (): void => {
-        this.setState({ defaultChosen: false, serverChosen: "" });
+        this.setState({ defaultChosen: false, checked: true});
     };
 
     private onHomeserverChange = (ev: ChangeEvent<HTMLInputElement>): void => {
@@ -157,7 +160,7 @@ export default class ServerPickerDialog extends React.PureComponent<IProps, ISta
     private onSubmit = async (ev: SyntheticEvent): Promise<void> => {
         ev.preventDefault();
 
-        if (this.state.serverChosen) {
+        if (!this.state.checked) {
             const serverChose = this.props.servers.find((server) => server.hsName === this.state.serverChosen);
             this.props.onFinished({...serverChose, isDefault: true, hsNameIsDifferent: true});
             return;
@@ -188,7 +191,6 @@ export default class ServerPickerDialog extends React.PureComponent<IProps, ISta
         //         </TextWithTooltip>
         //     );
         // }
-
         return (
             <BaseDialog
                 title={this.props.title || _t("auth|server_picker_title")}
@@ -207,6 +209,7 @@ export default class ServerPickerDialog extends React.PureComponent<IProps, ISta
                         element="select"
                         value={this.state.serverChosen}
                         onChange={this.onChangeServer}
+                        defaultValue={this.state.serverChosen}
                     >
                         {this.props.servers?.map((server) => (
                         <option key={server.hsUrl}  value={server.hsName}>
@@ -219,7 +222,7 @@ export default class ServerPickerDialog extends React.PureComponent<IProps, ISta
                         name="defaultChosen"
                         value="false"
                         className="mx_ServerPickerDialog_otherHomeserverRadio"
-                        checked={!this.state.defaultChosen}
+                        checked={this.state.checked}
                         onChange={this.onOtherChosen}
                         childrenInLabel={false}
                         aria-label={_t("auth|server_picker_custom")}
@@ -229,8 +232,8 @@ export default class ServerPickerDialog extends React.PureComponent<IProps, ISta
                             className="mx_ServerPickerDialog_otherHomeserver"
                             label={_t("auth|server_picker_custom")}
                             onChange={this.onHomeserverChange}
-                            onFocus={this.onOtherChosen}
                             ref={this.fieldRef}
+                            onFocus={this.onOtherChosen}
                             onValidate={this.onHomeserverValidate}
                             value={this.state.otherHomeserver}
                             validateOnChange={false}

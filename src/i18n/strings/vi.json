@@ -609,7 +609,8 @@
         "recommended": "Đề xuất",
         "save": "Lưu",
         "saved": "Đã lưu",
-        "updating": "Đang cập nhật..."
+        "updating": "Đang cập nhật...",
+        "getting_server": "Đang lấy danh sách máy chủ..."
     },
     "composer": {
         "autocomplete": {
